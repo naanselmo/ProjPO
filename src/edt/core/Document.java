@@ -1,46 +1,42 @@
 package edt.core;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class Document extends Section {
+public class Document extends Section implements Serializable {
 
+    private String _path;
     private SortedSet<Author> _authors;
-    private List<TextElement> _textElements;
+    private Map<String, TextElement> _textElements;
 
     public Document() {
         _authors = new TreeSet<>();
-        _textElements = new ArrayList<TextElement>();
+        _textElements = new HashMap<>();
     }
 
-    public void putTextElement(TextElement textelement) {
-        _textElements.add(textelement);
+    public void putTextElement(TextElement textElement) {
+        _textElements.put(textElement.getId(), textElement);
     }
 
     public boolean containsTextElement(String id) {
-        return getTextElement(id) != null;
+        return _textElements.containsKey(id);
     }
 
     public void removeTextElement(String id) {
-        TextElement element = getTextElement(id);
-        if (element != null)
-            _textElements.remove(element);
+        _textElements.remove(id);
     }
 
     public TextElement getTextElement(String id) {
-        for (TextElement element : _textElements) {
-            if (element.getId().equals(id))
-                return element;
-        }
-        return null;
+        return _textElements.get(id);
     }
 
-    public int getElementsCount() {
+    public int getTextElementsCount() {
         return _textElements.size();
     }
 
-    public int getDocumentLenght() {
+    public int getDocumentLength() {
         int counter = 0;
-        for (TextElement element : _textElements) {
+        for (TextElement element : _textElements.values()) {
             counter += element.getSize();
         }
         return counter;
@@ -50,7 +46,28 @@ public class Document extends Section {
         _authors.add(author);
     }
 
+    public void saveDocument() {
+        /* FIXME: Serialize document */
+    }
+
+    public void loadDocument() {
+        /* FIXME: Un-serialize document */
+    }
+
     public Iterator<Author> getAuthors() {
         return _authors.iterator();
+    }
+
+    @Override
+    public String getHeadline() {
+        return "{" + getTitle() + "}";
+    }
+
+    public String getPath() {
+        return _path;
+    }
+
+    public void setPath(String _path) {
+        this._path = _path;
     }
 }

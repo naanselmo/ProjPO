@@ -1,10 +1,13 @@
 package edt.core;
 
 import java.util.Iterator;
+import java.util.List;
 
 public class Section extends TextElement {
 
     private String _title;
+    private List<Paragraph> _paragraphs;
+    private List<Section> _sections;
 
     public Section(String title) {
     }
@@ -20,6 +23,10 @@ public class Section extends TextElement {
     @Override
     public int getSize() {
         return -1;
+    }
+
+    public String getHeadline() {
+        return null;
     }
 
     public void addSection(Section section, int index) {
