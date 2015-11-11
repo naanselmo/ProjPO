@@ -2,7 +2,7 @@ package edt.core;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.iterator;
+import java.util.Iterator;
 
 public class Document extends Section{
 	private List<Author> _authors;
@@ -61,5 +61,10 @@ public class Document extends Section{
 
 	public void addAuthor(Author author){
 		_authors.add(author);
+	}
+
+	public Iterator<Author> getAuthors(){
+		Iterator i = _authors.iterator();
+		return i;
 	}
 }
