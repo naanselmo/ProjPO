@@ -38,4 +38,9 @@ public class Author{
 	public int hashCode(){
 		return (_name + "//" + _email).hashcode();	
 	}
+
+	@Override
+	public int toCompare(Author author){
+		return _name.toCompare(author.getName());
+	}
 }
