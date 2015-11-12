@@ -15,14 +15,14 @@ public class MainMenu extends Menu {
 
     public MainMenu(Document document) {
         super(MenuEntry.TITLE,
-              new Command<?>[] { new NewDocument(Document document),
-                      new OpenDocument(Document document),
-                      new SaveDocument(Document document),
-                      new ShowMetadata(Document document),
-                      new AddAuthor(Document document),
-                      new ListTopSections(Document document),
-                      new ShowTextElement(Document document),
-                      new EditSection(Document document),
+              new Command<?>[] { new NewDocument(document),
+                      new OpenDocument(document),
+                      new SaveDocument(document),
+                      new ShowMetadata(document),
+                      new AddAuthor(document),
+                      new ListTopSections(document),
+                      new ShowTextElement(document),
+                      new EditSection(document),
                       });
     }
 }
