@@ -5,22 +5,24 @@ public class Paragraph extends TextElement {
     private String _text;
 
     public Paragraph(String text) {
+        _text = text;
     }
 
     public String getContent() {
-        return null;
+        return _text;
     }
 
     @Override
     public int getSize() {
-        return -1;
+        return _text.size();
     }
 
     public String getText() {
-        return null;
+        return _text;
     }
 
     public void setText(String text) {
+        _text = text;
     }
 
 }

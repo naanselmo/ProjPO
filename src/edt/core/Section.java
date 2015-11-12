@@ -10,6 +10,9 @@ public class Section extends TextElement {
     private List<Section> _sections;
 
     public Section(String title) {
+        _title = title;
+        _paragraphs = new ArrayList<Paragraph>();
+        _sections = new ArrayList<Section>();
     }
 
     public Section() {
@@ -30,10 +33,11 @@ public class Section extends TextElement {
     }
 
     public void addSection(Section section, int index) {
+        _sections.add(index, section);
     }
 
     public boolean containsSection(int index) {
-        return false;
+        return index < _section.size() && index >= 0;
     }
 
     public void renameSection(Document document, int index, String id) {
@@ -43,14 +47,15 @@ public class Section extends TextElement {
     }
 
     public int getSectionsCount() {
-        return -1;
+        return _sections.size();
     }
 
     public void addParagraph(Paragraph paragraph, int index) {
+        _paragraphs.add(index, paragraph);
     }
 
     public boolean containsParagraph(int index) {
-        return false;
+        return index < _paragraphs.size() && index >= 0;
     }
 
     public void renameParagraph(Document document, int index, String id) {
@@ -60,30 +65,37 @@ public class Section extends TextElement {
     }
 
     public int getParagraphsCount() {
-        return -1;
+        return _paragraphs.size();
     }
 
     public Section getSection(int index) {
-        return null;
+      if containsSection(index)
+          return _sections.get(index)
+      else
+          return null;
     }
 
     public Paragraph getParagraph(int index) {
-        return null;
+      if containsParagraph(index)
+          return _paragraphs.get(index)
+      else
+          return null;
     }
 
     public Iterator<Paragraph> getParagraphs() {
-        return null;
+        return _paragraphs.iterator();
     }
 
     public Iterator<Section> getSections() {
-        return null;
+        return _sections.iterator();
     }
 
     public String getTitle() {
-        return null;
+        return _title;
     }
 
     public void setTitle(String title) {
+        _title = title;
     }
 
 }
