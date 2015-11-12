@@ -13,8 +13,8 @@ public class Main{
 	 */
 
 	public static void main(String[] args) throws Exception{
-		Document app = new Document();
-		MainMenu menu = new MainMenu(app);
+		Document document = new Document();
+		MainMenu menu = new MainMenu(document);
 
 		IO.setTitle("Document Main Menu"); // Opcional, necessário verificar se o professor permite
 		menu.open();
