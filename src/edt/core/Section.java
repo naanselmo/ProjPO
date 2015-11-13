@@ -2,8 +2,12 @@ package edt.core;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.ArrayList;
+import edt.textui.main.*;
 
 public class Section extends TextElement {
+
+    private static final String LINE_SEPARATOR = System.getProperty("line.separator");
 
     private String _title;
     private List<Paragraph> _paragraphs;
@@ -20,16 +24,34 @@ public class Section extends TextElement {
     }
 
     public String getContent() {
-        return null;
+        StringBuilder output = new StringBuilder();
+
+        output.append(getHeadline()).append(LINE_SEPARATOR);
+
+        for(paragraph : _paragraphs)
+            output.append(paragraph.getContent()).append(LINE_SEPARATOR);
+
+        for(section : _sections)
+            output.append(section.getContent()).append(LINE_SEPARATOR);
+
+        return output.toString();
     }
 
     @Override
     public int getSize() {
-        return -1;
+        int size = _title.getBytes().length;
+
+        for(paragraph : _paragraphs)
+            size += paragraph.getSize();
+
+        for(section : _sections)
+            size += section.getSize();
+
+        return size;
     }
 
     public String getHeadline() {
-        return null;
+        return sectionIndexEntry(getId(), getTitle());
     }
 
     public void addSection(Section section, int index) {
@@ -37,13 +59,15 @@ public class Section extends TextElement {
     }
 
     public boolean containsSection(int index) {
-        return index < _section.size() && index >= 0;
+        return index < _sections.size() && index >= 0;
     }
 
     public void renameSection(Document document, int index, String id) {
+        document.renameTextElement(getSection(index), id);
     }
 
     public void removeSection(Document document, int index) {
+        document.removeTextElement(index);
     }
 
     public int getSectionsCount() {
@@ -59,9 +83,11 @@ public class Section extends TextElement {
     }
 
     public void renameParagraph(Document document, int index, String id) {
+        document.renameTextElement(getParagraph(index), id);
     }
 
     public void removeParagraph(Document document, int index) {
+        document.removeTextElement(index);
     }
 
     public int getParagraphsCount() {
@@ -69,17 +95,17 @@ public class Section extends TextElement {
     }
 
     public Section getSection(int index) {
-      if containsSection(index)
-          return _sections.get(index)
-      else
-          return null;
+      if (containsSection(index))
+          return _sections.get(index);
+
+      return null;
     }
 
     public Paragraph getParagraph(int index) {
-      if containsParagraph(index)
-          return _paragraphs.get(index)
-      else
-          return null;
+      if (containsParagraph(index))
+          return _paragraphs.get(index);
+
+      return null;
     }
 
     public Iterator<Paragraph> getParagraphs() {

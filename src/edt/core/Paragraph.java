@@ -14,7 +14,7 @@ public class Paragraph extends TextElement {
 
     @Override
     public int getSize() {
-        return _text.length();
+        return _text.getBytes().length;
     }
 
     public String getText() {
