@@ -1,7 +1,6 @@
 package edt.textui.section;
 
 import pt.utl.ist.po.ui.Command;
-import pt.utl.ist.po.ui.Display;
 
 /* FIXME: import core classes here */
 
@@ -12,7 +11,7 @@ public class ListSections extends Command</* FIXME: core class */> {
 
     /**
      * Constructor.
-     * 
+     *
      * @param ent the target entity.
      */
     public ListSections(/* FIXME: decls of argument(s) for receiver(s) */) {

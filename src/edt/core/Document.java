@@ -9,12 +9,13 @@ public class Document extends Section implements Serializable {
     private SortedSet<Author> _authors;
     private Map<String, TextElement> _textElements;
 
-    public Document() {
+    public Document(String title) {
+        super(title);
         _authors = new TreeSet<>();
         _textElements = new HashMap<>();
     }
 
-    public void putTextElement(TextElement textElement) {
+    public void indexTextElement(TextElement textElement) {
         _textElements.put(textElement.getId(), textElement);
     }
 
@@ -22,8 +23,15 @@ public class Document extends Section implements Serializable {
         return _textElements.containsKey(id);
     }
 
-    public void removeTextElement(String id) {
-        _textElements.remove(id);
+    public void renameTextElement(TextElement element, String id) {
+        if(containsTextElement(id))
+            removeTextElement(getTextElement(id));
+        element.setId(id);
+        indexTextElement(element);
+    }
+
+    public void removeTextElement(TextElement element) {
+        _textElements.remove(element.getId()).removeId();
     }
 
     public TextElement getTextElement(String id) {
@@ -34,33 +42,21 @@ public class Document extends Section implements Serializable {
         return _textElements.size();
     }
 
+    @Override
+    public String getHeadline() {
+        return "{" + getTitle() + "}";
+    }
+
     public int getDocumentLength() {
-        int counter = 0;
-        for (TextElement element : _textElements.values()) {
-            counter += element.getSize();
-        }
-        return counter;
+        return getSize();
     }
 
     public void addAuthor(Author author) {
         _authors.add(author);
     }
 
-    public void saveDocument() {
-        /* FIXME: Serialize document */
-    }
-
-    public void loadDocument() {
-        /* FIXME: Un-serialize document */
-    }
-
     public Iterator<Author> getAuthors() {
         return _authors.iterator();
-    }
-
-    @Override
-    public String getHeadline() {
-        return "{" + getTitle() + "}";
     }
 
     public String getPath() {

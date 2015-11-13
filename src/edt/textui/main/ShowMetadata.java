@@ -1,22 +1,22 @@
 package edt.textui.main;
 
+import edt.core.Editor;
 import pt.utl.ist.po.ui.Command;
-import pt.utl.ist.po.ui.Display;
 
 /* FIXME: import core classes here */
 
 /**
  * Command for showing the metadata of the current document in the editor.
  */
-public class ShowMetadata extends Command</* FIXME: core class */> {
+public class ShowMetadata extends Command<Editor> {
 
     /**
      * Constructor.
-     * 
-     * @param ent the target entity.
+     *
+     * @param editor the target entity.
      */
-    public ShowMetadata(/* FIXME: decls of argument(s) for receiver(s) */) {
-        super(MenuEntry.SHOW_METADATA, ent);
+    public ShowMetadata(Editor editor) {
+        super(MenuEntry.SHOW_METADATA, editor);
     }
 
     /**

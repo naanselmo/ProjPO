@@ -1,24 +1,22 @@
 package edt.textui.main;
 
-import pt.utl.ist.po.ui.Menu;
+import edt.core.Editor;
 import pt.utl.ist.po.ui.Command;
-
-import edt.textui.section.EditMenu;
 
 /* FIXME: import core classes here */
 
 /**
  * Command for editing the current document in the editor.
  */
-public class EditSection extends Command</* FIXME: core class */> {
+public class EditSection extends Command<Editor> {
 
     /**
      * Constructor.
-     * 
-     * @param ent the target entity.
+     *
+     * @param editor the target entity.
      */
-    public EditSection(/* FIXME: decls of argument(s) for receiver(s) */) {
-        super(MenuEntry.OPEN_DOCUMENT_EDITOR, ent);
+    public EditSection(Editor editor) {
+        super(MenuEntry.OPEN_DOCUMENT_EDITOR, editor);
     }
 
     /**

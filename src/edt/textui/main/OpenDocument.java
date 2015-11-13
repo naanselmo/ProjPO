@@ -1,12 +1,7 @@
 package edt.textui.main;
 
-import java.io.IOException;
-
-import pt.utl.ist.po.ui.Menu;
+import edt.core.Editor;
 import pt.utl.ist.po.ui.Command;
-import pt.utl.ist.po.ui.Display;
-import pt.utl.ist.po.ui.Form;
-import pt.utl.ist.po.ui.InputString;
 import pt.utl.ist.po.ui.InvalidOperation;
 
 /* FIXME: import core classes here */
@@ -14,15 +9,15 @@ import pt.utl.ist.po.ui.InvalidOperation;
 /**
  * Command for opening an existing document in the editor.
  */
-public class OpenDocument extends Command</* FIXME: core class */> {
+public class OpenDocument extends Command<Editor> {
 
     /**
      * Constructor.
-     * 
-     * @param ent the target entity.
+     *
+     * @param editor the target entity.
      */
-    public OpenDocument(/* FIXME: decls of argument(s) for receiver(s) */) {
-        super(MenuEntry.OPEN, ent);
+    public OpenDocument(Editor editor) {
+        super(MenuEntry.OPEN, editor);
     }
 
     /**

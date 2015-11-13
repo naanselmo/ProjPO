@@ -1,25 +1,22 @@
 package edt.textui.main;
 
-import pt.utl.ist.po.ui.Menu;
+import edt.core.Editor;
 import pt.utl.ist.po.ui.Command;
-import pt.utl.ist.po.ui.Display;
-import pt.utl.ist.po.ui.Form;
-import pt.utl.ist.po.ui.InputString;
 
 /* FIXME: import core classes here */
 
 /**
  * Command for adding an author to the current document in the editor.
  */
-public class AddAuthor extends Command</* FIXME: core class */> {
+public class AddAuthor extends Command<Editor> {
 
     /**
      * Constructor.
-     * 
-     * @param ent the target entity.
+     *
+     * @param editor the target entity.
      */
-    public AddAuthor(/* FIXME: decls of argument(s) for receiver(s) */) {
-        super(MenuEntry.ADD_AUTHOR, ent);
+    public AddAuthor(Editor editor) {
+        super(MenuEntry.ADD_AUTHOR, editor);
     }
 
     /**

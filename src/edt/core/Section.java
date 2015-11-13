@@ -1,9 +1,10 @@
 package edt.core;
 
+import edt.textui.main.Message;
+
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.ArrayList;
-import edt.textui.main.*;
 
 public class Section extends TextElement {
 
@@ -15,12 +16,8 @@ public class Section extends TextElement {
 
     public Section(String title) {
         _title = title;
-        _paragraphs = new ArrayList<Paragraph>();
-        _sections = new ArrayList<Section>();
-    }
-
-    public Section() {
-        this(null);
+        _paragraphs = new ArrayList<>();
+        _sections = new ArrayList<>();
     }
 
     public String getContent() {
@@ -28,10 +25,10 @@ public class Section extends TextElement {
 
         output.append(getHeadline()).append(LINE_SEPARATOR);
 
-        for(paragraph : _paragraphs)
+        for (Paragraph paragraph : _paragraphs)
             output.append(paragraph.getContent()).append(LINE_SEPARATOR);
 
-        for(section : _sections)
+        for (Section section : _sections)
             output.append(section.getContent()).append(LINE_SEPARATOR);
 
         return output.toString();
@@ -41,17 +38,17 @@ public class Section extends TextElement {
     public int getSize() {
         int size = _title.getBytes().length;
 
-        for(paragraph : _paragraphs)
+        for (Paragraph paragraph : _paragraphs)
             size += paragraph.getSize();
 
-        for(section : _sections)
+        for (Section section : _sections)
             size += section.getSize();
 
         return size;
     }
 
     public String getHeadline() {
-        return sectionIndexEntry(getId(), getTitle());
+        return Message.sectionIndexEntry(getId(), getTitle());
     }
 
     public void addSection(Section section, int index) {
@@ -67,7 +64,7 @@ public class Section extends TextElement {
     }
 
     public void removeSection(Document document, int index) {
-        document.removeTextElement(index);
+        document.removeTextElement(getSection(index));
     }
 
     public int getSectionsCount() {
@@ -87,7 +84,7 @@ public class Section extends TextElement {
     }
 
     public void removeParagraph(Document document, int index) {
-        document.removeTextElement(index);
+        document.removeTextElement(getParagraph(index));
     }
 
     public int getParagraphsCount() {
@@ -95,17 +92,17 @@ public class Section extends TextElement {
     }
 
     public Section getSection(int index) {
-      if (containsSection(index))
-          return _sections.get(index);
+        if (containsSection(index))
+            return _sections.get(index);
 
-      return null;
+        return null;
     }
 
     public Paragraph getParagraph(int index) {
-      if (containsParagraph(index))
-          return _paragraphs.get(index);
+        if (containsParagraph(index))
+            return _paragraphs.get(index);
 
-      return null;
+        return null;
     }
 
     public Iterator<Paragraph> getParagraphs() {

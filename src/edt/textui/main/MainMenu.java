@@ -1,10 +1,10 @@
 package edt.textui.main;
 
+import edt.core.Editor;
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Menu;
 
 /* FIXME: import core classes here */
-import edt.core.*;
 
 /**
  * Represents the main menu of this application. This is the first menu
@@ -13,16 +13,16 @@ import edt.core.*;
 
 public class MainMenu extends Menu {
 
-    public MainMenu(Document document) {
+    public MainMenu(Editor editor) {
         super(MenuEntry.TITLE,
-              new Command<?>[] { new NewDocument(document),
-                      new OpenDocument(document),
-                      new SaveDocument(document),
-                      new ShowMetadata(document),
-                      new AddAuthor(document),
-                      new ListTopSections(document),
-                      new ShowTextElement(document),
-                      new EditSection(document),
-                      });
+                new Command<?>[]{new NewDocument(editor),
+                        new OpenDocument(editor),
+                        new SaveDocument(editor),
+                        new ShowMetadata(editor),
+                        new AddAuthor(editor),
+                        new ListTopSections(editor),
+                        new ShowTextElement(editor),
+                        new EditSection(editor),
+                });
     }
 }

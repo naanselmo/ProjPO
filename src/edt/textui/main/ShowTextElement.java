@@ -1,24 +1,22 @@
 package edt.textui.main;
 
+import edt.core.Editor;
 import pt.utl.ist.po.ui.Command;
-import pt.utl.ist.po.ui.Display;
-import pt.utl.ist.po.ui.Form;
-import pt.utl.ist.po.ui.InputString;
 
 /* FIXME: import core classes here */
 
 /**
  * Command for showing the text element with a given identifier of the current document in the editor.
  */
-public class ShowTextElement extends Command</* FIXME: core class */> {
+public class ShowTextElement extends Command<Editor> {
 
     /**
      * Constructor.
-     * 
-     * @param ent the target entity.
+     *
+     * @param editor the target entity.
      */
-    public ShowTextElement(/* FIXME: decls of argument(s) for receiver(s) */) {
-        super(MenuEntry.SHOW_TEXT_ELEMENT, ent);
+    public ShowTextElement(Editor editor) {
+        super(MenuEntry.SHOW_TEXT_ELEMENT, editor);
     }
 
     /**

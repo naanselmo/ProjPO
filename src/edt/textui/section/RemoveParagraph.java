@@ -1,9 +1,6 @@
 package edt.textui.section;
 
 import pt.utl.ist.po.ui.Command;
-import pt.utl.ist.po.ui.Display;
-import pt.utl.ist.po.ui.Form;
-import pt.utl.ist.po.ui.InputInteger;
 
 /* FIXME: import core classes here */
 
@@ -14,7 +11,7 @@ public class RemoveParagraph extends Command</* FIXME: core class */> {
 
     /**
      * Constructor.
-     * 
+     *
      * @param ent the target entity.
      */
     public RemoveParagraph(/* FIXME: decls of argument(s) for receiver(s) */) {
