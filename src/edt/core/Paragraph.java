@@ -1,6 +1,6 @@
 package edt.core;
 
-public class Paragraph extends TextElement {
+public class Paragraph extends TextElement implements Serializable {
 
     private String _text;
 

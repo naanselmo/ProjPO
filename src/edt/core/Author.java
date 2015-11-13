@@ -1,6 +1,6 @@
 package edt.core;
 
-public class Author implements Comparable<Author> {
+public class Author implements Comparable<Author>, Serializable {
 
     private String _name;
     private String _email;
