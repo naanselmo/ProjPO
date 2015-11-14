@@ -18,19 +18,19 @@ public class EditMenu extends Menu {
      * @param doc
      * @param section
      **/
-    public EditMenu(/* FIXME: decls of argument(s) for receiver(s) */) {
+    public EditMenu(Editor editor) {
         super(MenuEntry.TITLE,
-                new Command<?>[]{new ChangeTitle(/* FIXME: receiver(s) */),
-                        new ListSections(/* FIXME: receiver(s) */),
-                        new ShowSection(/* FIXME: receiver(s) */),
-                        new SelectSection(/* FIXME: receiver(s) */),
-                        new InsertSection(/* FIXME: receiver(s) */),
-                        new IndexSection(/* FIXME: receiver(s) */),
-                        new RemoveSection(/* FIXME: receiver(s) */),
-                        new InsertParagraph(/* FIXME: receiver(s) */),
-                        new IndexParagraph(/* FIXME: receiver(s) */),
-                        new ChangeParagraph(/* FIXME: receiver(s) */),
-                        new RemoveParagraph(/* FIXME: receiver(s) */),
+                new Command<?>[]{new ChangeTitle(editor),
+                        new ListSections(editor),
+                        new ShowSection(editor),
+                        new SelectSection(editor),
+                        new InsertSection(editor),
+                        new IndexSection(editor),
+                        new RemoveSection(editor),
+                        new InsertParagraph(editor),
+                        new IndexParagraph(editor),
+                        new ChangeParagraph(editor),
+                        new RemoveParagraph(editor),
                 });
     }
 }

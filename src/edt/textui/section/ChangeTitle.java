@@ -7,15 +7,15 @@ import pt.utl.ist.po.ui.Command;
 /**
  * Command for changing the title of the current section.
  */
-public class ChangeTitle extends Command</* FIXME: core class */> {
+public class ChangeTitle extends Command<Editor> {
 
     /**
      * Constructor.
      *
-     * @param ent the target entity.
+     * @param editor the target entity.
      */
-    public ChangeTitle(/* FIXME: decls of argument(s) for receiver(s) */) {
-        super(MenuEntry.CHANGE_TITLE, ent);
+    public ChangeTitle(Editor editor) {
+        super(MenuEntry.CHANGE_TITLE, editor);
     }
 
     /**

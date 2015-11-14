@@ -7,15 +7,15 @@ import pt.utl.ist.po.ui.Command;
 /**
  * Command for adding a paragraph to the current section.
  */
-public class InsertParagraph extends Command</* FIXME: core class */> {
+public class InsertParagraph extends Command<Editor> {
 
     /**
      * Constructor.
      *
-     * @param ent the target entity.
+     * @param editor the target entity.
      */
-    public InsertParagraph(/* FIXME: decls of argument(s) for receiver(s) */) {
-        super(MenuEntry.INSERT_PARAGRAPH, ent);
+    public InsertParagraph(Editor editor) {
+        super(MenuEntry.INSERT_PARAGRAPH, editor);
     }
 
     /**

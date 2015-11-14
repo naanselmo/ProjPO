@@ -7,15 +7,15 @@ import pt.utl.ist.po.ui.Command;
 /**
  * Command for changing the content of a paragraph of the current section.
  */
-public class ChangeParagraph extends Command</* FIXME: core class */> {
+public class ChangeParagraph extends Command<Editor> {
 
     /**
      * Constructor.
      *
-     * @param ent the target entity.
+     * @param editor the target entity.
      */
-    public ChangeParagraph(/* FIXME: decls of argument(s) for receiver(s) */) {
-        super(MenuEntry.EDIT_PARAGRAPH, ent);
+    public ChangeParagraph(Editor editor) {
+        super(MenuEntry.EDIT_PARAGRAPH, editor);
     }
 
     /**

@@ -7,15 +7,15 @@ import pt.utl.ist.po.ui.Command;
 /**
  * Command for adding a subsection to current section.
  */
-public class InsertSection extends Command</* FIXME: core class */> {
+public class InsertSection extends Command<Editor> {
 
     /**
      * Constructor.
      *
-     * @param ent the target entity.
+     * @param editor the target entity.
      */
-    public InsertSection(/* FIXME: decls of argument(s) for receiver(s) */) {
-        super(MenuEntry.INSERT_SECTION, ent);
+    public InsertSection(Editor editor) {
+        super(MenuEntry.INSERT_SECTION, editor);
     }
 
     /**
