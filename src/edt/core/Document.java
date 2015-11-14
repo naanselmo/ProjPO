@@ -63,11 +63,11 @@ public class Document extends Section implements Serializable {
         return _path;
     }
 
-    public boolean hasPath() {
-        return _path != null;
-    }
-
     public void setPath(String _path) {
         this._path = _path;
+    }
+
+    public boolean hasPath() {
+        return _path != null;
     }
 }

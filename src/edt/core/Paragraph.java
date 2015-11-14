@@ -16,7 +16,7 @@ public class Paragraph extends TextElement implements Serializable {
 
     @Override
     public int getSize() {
-        return _text.getBytes().length;
+        return _text.length(); //_text.getBytes().length;
     }
 
     public String getText() {

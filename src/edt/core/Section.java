@@ -37,7 +37,7 @@ public class Section extends TextElement implements Serializable {
 
     @Override
     public int getSize() {
-        int size = _title.getBytes().length;
+        int size = _title.length(); // _title.getBytes().length;
 
         for (Paragraph paragraph : _paragraphs)
             size += paragraph.getSize();
@@ -49,13 +49,13 @@ public class Section extends TextElement implements Serializable {
     }
 
     public String getHeadline() {
-        if(hasId())
+        if (hasId())
             return Message.sectionIndexEntry(getId(), getTitle());
         return Message.sectionIndexEntry("", getTitle());
     }
 
     public void addSection(Section section, int index) {
-        if(containsSection(index))
+        if (containsSection(index))
             _sections.add(index, section);
         else
             _sections.add(section);
@@ -78,7 +78,7 @@ public class Section extends TextElement implements Serializable {
     }
 
     public void addParagraph(Paragraph paragraph, int index) {
-        if(containsParagraph(index))
+        if (containsParagraph(index))
             _paragraphs.add(index, paragraph);
         else
             _paragraphs.add(paragraph);

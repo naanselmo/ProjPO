@@ -1,7 +1,7 @@
 package edt.core;
 
-import edt.exception.*;
 import edt.exception.FileNotFoundException;
+import edt.parser.Parser;
 
 import java.io.*;
 
@@ -11,14 +11,18 @@ import java.io.*;
 public class Editor {
 
     private Document _document;
+    private Section _section;
 
     public Editor() {
-        String propertyImport = System.getProperty("Import");
-        if (propertyImport != null){
-            Parser parser = new Parser()
-            _document = parser(propertyImport);
-        }
-        else
+        String propertyImport = System.getProperty("import");
+        if (propertyImport != null) {
+            Parser parser = new Parser();
+            try {
+                _document = parser.parse(propertyImport);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else
             this._document = new NullDocument();
     }
 
@@ -26,7 +30,7 @@ public class Editor {
         _document = new Document("");
     }
 
-    public void saveDocument() {
+    public void saveDocument() throws FileNotFoundException {
         /* FIXME: IF NO CHANGES WERE DONE DON'T DO SHIT! */
         try {
             FileOutputStream file = new FileOutputStream(_document.getPath());
@@ -35,11 +39,11 @@ public class Editor {
             out.close();
             file.close();
         } catch (IOException i) {
-            i.printStackTrace();
+            throw new FileNotFoundException();
         }
     }
 
-    public void saveNewDocument(String path) {
+    public void saveNewDocument(String path) throws FileNotFoundException {
         _document.setPath(path);
         saveDocument();
     }
@@ -53,7 +57,7 @@ public class Editor {
             file.close();
         } catch (IOException e) {
             throw new FileNotFoundException();
-        } catch (ClassNotFoundException e){
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
@@ -61,5 +65,10 @@ public class Editor {
     public Document getDocument() {
         return _document;
     }
+
+    public Section getSection() {
+        return _section;
+    }
+
 
 }

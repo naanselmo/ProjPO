@@ -11,9 +11,9 @@ import pt.utl.ist.po.ui.Command;
 public class EditSection extends Command<Editor> {
 
     /**
-     * Constructor.
+     * Constructor of the EditSection command.
      *
-     * @param editor the target entity.
+     * @param editor The editor of the application.
      */
     public EditSection(Editor editor) {
         super(MenuEntry.OPEN_DOCUMENT_EDITOR, editor);
@@ -25,7 +25,7 @@ public class EditSection extends Command<Editor> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        /* FIXME: implement command */
+
     }
 }
 
