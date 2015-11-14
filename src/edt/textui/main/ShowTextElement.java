@@ -14,7 +14,7 @@ import pt.utl.ist.po.ui.InputString;
 public class ShowTextElement extends Command<Editor> {
 
     /**
-     * Creates the ShowTextElement command.
+     * Initializes the ShowTextElement command.
      *
      * @param editor The editor of the application.
      */

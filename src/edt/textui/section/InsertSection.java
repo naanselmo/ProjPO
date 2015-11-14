@@ -1,8 +1,7 @@
 package edt.textui.section;
 
+import edt.core.Editor;
 import pt.utl.ist.po.ui.Command;
-
-/* FIXME: import core classes here */
 
 /**
  * Command for adding a subsection to current section.
@@ -10,9 +9,9 @@ import pt.utl.ist.po.ui.Command;
 public class InsertSection extends Command<Editor> {
 
     /**
-     * Constructor.
+     * Initializes the InsertSection command.
      *
-     * @param editor the target entity.
+     * @param editor The editor of the application.
      */
     public InsertSection(Editor editor) {
         super(MenuEntry.INSERT_SECTION, editor);

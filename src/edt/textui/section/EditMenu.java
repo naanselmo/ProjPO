@@ -1,18 +1,17 @@
 package edt.textui.section;
 
+import edt.core.Editor;
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Menu;
-
-/* FIXME: import core classes here */
 
 /**
  * Represents the edit menu of this application. This menu
  * shows the option to edit the selected section.
- ***/
-
+ */
 public class EditMenu extends Menu {
+
     /**
-     * Builds an EditMenu object. It has all available options for editing
+     * Initializes the edit menu of the application. It has all available options for editing
      * a section.
      *
      * @param doc

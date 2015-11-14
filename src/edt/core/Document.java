@@ -3,44 +3,53 @@ package edt.core;
 import java.io.Serializable;
 import java.util.*;
 
+/**
+ * Document class. Represents a document.
+ */
 public class Document extends Section implements Serializable {
 
     private String _path;
     private SortedSet<Author> _authors;
     private Map<String, TextElement> _textElements;
 
-/**
- * Creates a new document with a given title.
- * @param  title The title of the document.
- */
+    /**
+     * Initializes a new document with a given title.
+     *
+     * @param title The title of the document.
+     */
     public Document(String title) {
         super(title);
         _authors = new TreeSet<>();
         _textElements = new HashMap<>();
     }
 
-/**
- * Adds a TextElement to the document.
- * @param textElement The TextElement to add to the document.
- */
-    public void indexTextElement(TextElement textElement) {
-        _textElements.put(textElement.getId(), textElement);
+    /**
+     * Adds a text element to the document.
+     *
+     * @param element The text element to add to this document.
+     */
+    public void indexTextElement(TextElement element) {
+        _textElements.put(element.getId(), element);
     }
 
-/**
- * Verifies if a TextElement is in the document.
- * @param  id Id to verify.
- * @return    True if a TextElement is in the Document.
- */
+    /**
+     * Checks if a text element associated with a given identifier is in the document.
+     *
+     * @param id Identifier to verify.
+     * @return {@code true} if the text element associated with the given identifier is in this document.
+     */
     public boolean containsTextElement(String id) {
         return _textElements.containsKey(id);
     }
 
-/**
- * Change the id of a TextElement in the document.
- * @param element TextElement to rename.
- * @param id      New Id of the TextElement.
- */
+    /**
+     * Renames the identifier of a text element in the document.
+     * If the text element it's not in the document it will add it to the document.
+     * If the given identifier already exists in the document, it will overwrite it.
+     *
+     * @param element Text element to rename.
+     * @param id      New identifier of the text element.
+     */
     public void renameTextElement(TextElement element, String id) {
         if (containsTextElement(id))
             removeTextElement(getTextElement(id));
@@ -48,81 +57,86 @@ public class Document extends Section implements Serializable {
         indexTextElement(element);
     }
 
-/**
- * Removes a TextElement of a Document
- * @param element The textElement that is going to be removed in the Document.
- */
+    /**
+     * Removes a text element of the document. Also removes the associated identifier from the text element.
+     *
+     * @param element The text element that is going to be removed from this document.
+     */
     public void removeTextElement(TextElement element) {
         _textElements.remove(element.getId()).removeId();
     }
 
-/**
- * Gets a TextElement when given an id.
- * @param  id Id of the TextElement.
- * @return    TextElement.
- */
+    /**
+     * Returns the text element associated with a given identifier in the document.
+     *
+     * @param id Identifier of the text element to search for.
+     * @return Text element associated with the given identifier.
+     */
     public TextElement getTextElement(String id) {
         return _textElements.get(id);
     }
 
-/**
- *Total number of Id's in the document.
- * @return Number of Id's.
- */
+    /**
+     * Count of all the text elements associated with an identifier in the document.
+     *
+     * @return Count of all the text elements associated with an identifier in this document.
+     */
     public int getTextElementsCount() {
         return _textElements.size();
     }
 
+    /**
+     * Returns the headline of the document.
+     *
+     * @return The headline of this document.
+     */
     @Override
     public String getHeadline() {
         return "{" + getTitle() + "}";
     }
 
-/**
- * Total number of bytes of a document.
- * @return Size of the document.
- */
-    public int getDocumentLength() {
-        return getSize();
-    }
-
-/**
- * Add's an Author to the document.
- * @param  author Author to add.
- * @return        False if the author already exists.
- */
+    /**
+     * Adds an Author to the document.
+     *
+     * @param author Author to add to this document.
+     * @return {@code false} if the author is already associated with this document.
+     */
     public boolean addAuthor(Author author) {
         return _authors.add(author);
     }
 
-/**
- * Gets an iterator to the authors.
- * @return Iterator for the authors.
- */
+    /**
+     * Returns an iterator with all the authors associated with the document.
+     *
+     * @return Iterator with all the authors associated with this document.
+     */
     public Iterator<Author> getAuthors() {
         return _authors.iterator();
     }
 
-/**
- * Gets the path of the document.
- * @return The path for the file of the document.
- */
+    /**
+     * Returns the file path associated with the document.
+     *
+     * @return The file path of this document.
+     */
     public String getPath() {
         return _path;
     }
 
-/**
- * Defines the path for the document.
- * @param _path Path for the file of the document.
- */
-    public void setPath(String _path) {
-        this._path = _path;
+    /**
+     * Sets the file path associated with the document.
+     *
+     * @param path New file path for this document.
+     */
+    public void setPath(String path) {
+        this._path = path;
     }
 
-/**
- * Verifies if there is a Path to a file.
- * @return True if there is Path to a file.
- */
+    /**
+     * Checks if there is a file path associated with the document.
+     *
+     * @return {@code true} if there is file path associated with this document.
+     */
     public boolean hasPath() {
         return _path != null;
     }

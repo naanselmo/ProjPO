@@ -12,7 +12,7 @@ import pt.utl.ist.po.ui.InvalidOperation;
 public class OpenDocument extends Command<Editor> {
 
     /**
-     * Constructor of the OpenDocument command.
+     * Initializes the OpenDocument command.
      *
      * @param editor The editor of the application.
      */
@@ -29,7 +29,6 @@ public class OpenDocument extends Command<Editor> {
         Form form = new Form();
         InputString path = new InputString(form, Message.openFile());
         form.parse();
-
 
         entity().loadDocument(path.value());
     }

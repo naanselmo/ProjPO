@@ -1,21 +1,20 @@
 package edt.textui.section;
 
+import edt.core.Editor;
 import pt.utl.ist.po.ui.Command;
-
-/* FIXME: import core classes here */
 
 /**
  * Command for indexing ia subsection (nomear secção 2.2.6) the current section .
  */
-public class IndexSection extends Command</* FIXME: core class */> {
+public class IndexSection extends Command<Editor> {
 
     /**
-     * Constructor.
+     * Initializes the IndexSection command.
      *
-     * @param ent the target entity.
+     * @param editor The editor of the application.
      */
-    public IndexSection(/* FIXME: decls of argument(s) for receiver(s) */) {
-        super(MenuEntry.NAME_SECTION, ent);
+    public IndexSection(Editor editor) {
+        super(MenuEntry.NAME_SECTION, editor);
     }
 
     /**

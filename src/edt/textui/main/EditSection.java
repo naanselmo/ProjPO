@@ -1,9 +1,8 @@
 package edt.textui.main;
 
 import edt.core.Editor;
+import edt.textui.section.EditMenu;
 import pt.utl.ist.po.ui.Command;
-
-/* FIXME: import core classes here */
 
 /**
  * Command for editing the current document in the editor.
@@ -11,7 +10,7 @@ import pt.utl.ist.po.ui.Command;
 public class EditSection extends Command<Editor> {
 
     /**
-     * Constructor of the EditSection command.
+     * Initializes the EditSection command.
      *
      * @param editor The editor of the application.
      */
@@ -25,7 +24,7 @@ public class EditSection extends Command<Editor> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-
+        new EditMenu(entity()).open();
     }
 }
 

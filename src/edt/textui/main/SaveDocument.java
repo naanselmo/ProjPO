@@ -13,7 +13,7 @@ import pt.utl.ist.po.ui.InvalidOperation;
 public class SaveDocument extends Command<Editor> {
 
     /**
-     * Constructor of the SaveDocument command.
+     * Initializes the SaveDocument command.
      *
      * @param editor The editor of the application.
      */

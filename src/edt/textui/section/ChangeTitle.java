@@ -1,8 +1,7 @@
 package edt.textui.section;
 
+import edt.core.Editor;
 import pt.utl.ist.po.ui.Command;
-
-/* FIXME: import core classes here */
 
 /**
  * Command for changing the title of the current section.
@@ -10,9 +9,9 @@ import pt.utl.ist.po.ui.Command;
 public class ChangeTitle extends Command<Editor> {
 
     /**
-     * Constructor.
+     * Initializes the ChangeTitle command.
      *
-     * @param editor the target entity.
+     * @param editor The editor of the application.
      */
     public ChangeTitle(Editor editor) {
         super(MenuEntry.CHANGE_TITLE, editor);

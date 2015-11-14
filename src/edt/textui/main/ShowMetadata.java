@@ -14,7 +14,7 @@ import java.util.Iterator;
 public class ShowMetadata extends Command<Editor> {
 
     /**
-     * Constructor of the ShowMetadata command.
+     * Initializes the ShowMetadata command.
      *
      * @param editor The editor of the application.
      */
@@ -40,7 +40,7 @@ public class ShowMetadata extends Command<Editor> {
         }
 
         display.addNewLine(Message.documentSections(document.getSectionsCount()));
-        display.addNewLine(Message.documentBytes(document.getDocumentLength()));
+        display.addNewLine(Message.documentBytes(document.getSize()));
         display.addNewLine(Message.documentIdentifiers(document.getTextElementsCount()));
 
         display.display();

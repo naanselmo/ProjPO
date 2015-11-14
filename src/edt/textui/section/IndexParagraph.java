@@ -1,8 +1,7 @@
 package edt.textui.section;
 
+import edt.core.Editor;
 import pt.utl.ist.po.ui.Command;
-
-/* FIXME: import core classes here */
 
 /**
  * Command for indexing a paragraph (nomear um parágrafo 2.2.9) of the current section.
@@ -10,9 +9,9 @@ import pt.utl.ist.po.ui.Command;
 public class IndexParagraph extends Command<Editor> {
 
     /**
-     * Constructor.
+     * Initializes the IndexParagraph command.
      *
-     * @param editor the target entity.
+     * @param editor The editor of the application.
      */
     public IndexParagraph(Editor editor) {
         super(MenuEntry.NAME_PARAGRAPH, editor);

@@ -1,8 +1,7 @@
 package edt.textui.section;
 
+import edt.core.Editor;
 import pt.utl.ist.po.ui.Command;
-
-/* FIXME: import core classes here */
 
 /**
  * Command for selecting a subsection of the current section and edit it.
@@ -10,9 +9,9 @@ import pt.utl.ist.po.ui.Command;
 public class SelectSection extends Command<Editor> {
 
     /**
-     * Constructor.
+     * Initializes the SelectSection command.
      *
-     * @param editor the target entity.
+     * @param editor The editor of the application.
      */
     public SelectSection(Editor editor) {
         super(MenuEntry.SELECT_SECTION, editor);

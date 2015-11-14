@@ -9,7 +9,7 @@ import pt.utl.ist.po.ui.Command;
 public class NewDocument extends Command<Editor> {
 
     /**
-     * Creates the NewDocument command.
+     * Initializes the NewDocument command.
      *
      * @param editor The editor of the application.
      */

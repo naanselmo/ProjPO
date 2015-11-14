@@ -13,6 +13,11 @@ import pt.utl.ist.po.ui.Menu;
 
 public class MainMenu extends Menu {
 
+    /**
+     * Initializes the Main menu of the application.
+     *
+     * @param editor The editor of the application.
+     */
     public MainMenu(Editor editor) {
         super(MenuEntry.TITLE,
                 new Command<?>[]{new NewDocument(editor),

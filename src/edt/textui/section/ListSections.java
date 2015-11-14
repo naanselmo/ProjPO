@@ -1,8 +1,7 @@
 package edt.textui.section;
 
+import edt.core.Editor;
 import pt.utl.ist.po.ui.Command;
-
-/* FIXME: import core classes here */
 
 /**
  * Command for listing all subsections of the current section.
@@ -10,9 +9,9 @@ import pt.utl.ist.po.ui.Command;
 public class ListSections extends Command<Editor> {
 
     /**
-     * Constructor.
+     * Initializes the ListSections command.
      *
-     * @param editor the target ent.
+     * @param editor The editor of the application.
      */
     public ListSections(Editor editor) {
         super(MenuEntry.LIST_SECTIONS, editor);

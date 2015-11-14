@@ -1,17 +1,17 @@
 package edt.textui.section;
 
+import edt.core.Editor;
 import pt.utl.ist.po.ui.Command;
 
-import edt.core.Editor;
 /**
  * Command for showing the content of current section.
  */
 public class ShowSection extends Command<Editor> {
 
     /**
-     * Constructor.
+     * Initializes the ShowSection command.
      *
-     * @param editor the target entity.
+     * @param editor The editor of the application.
      */
     public ShowSection(Editor editor) {
         super(MenuEntry.SHOW_CONTENT, editor);

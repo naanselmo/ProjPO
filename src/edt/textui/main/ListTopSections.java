@@ -14,7 +14,7 @@ import java.util.Iterator;
 public class ListTopSections extends Command<Editor> {
 
     /**
-     * Constructor of the ListTopSections command.
+     * Initializes the ListTopSections command.
      *
      * @param editor The editor of the application.
      */

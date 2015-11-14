@@ -17,7 +17,8 @@ public class Section extends TextElement implements Serializable {
 
     /**
      * Initializes a new Section.
-     * @param  title New section's title.
+     *
+     * @param title Section's title.
      */
     public Section(String title) {
         _title = title;
@@ -27,7 +28,8 @@ public class Section extends TextElement implements Serializable {
 
     /**
      * Returns the section's content.
-     * @return The content.
+     *
+     * @return The content of this section.
      */
     public String getContent() {
         StringBuilder output = new StringBuilder();
@@ -45,7 +47,8 @@ public class Section extends TextElement implements Serializable {
 
     /**
      * Returns the section's size.
-     * @return The size.
+     *
+     * @return The size of this section.
      */
     @Override
     public int getSize() {
@@ -62,7 +65,8 @@ public class Section extends TextElement implements Serializable {
 
     /**
      * Returns the headline, with its formatting being defined within the {@link edt.textui.main.Message} class.
-     * @return The formatted headline.
+     *
+     * @return The formatted headline of this section.
      */
     public String getHeadline() {
         if (hasId())
@@ -71,9 +75,10 @@ public class Section extends TextElement implements Serializable {
     }
 
     /**
-     * Adds a new section as a subsection.
-     * @param section Section to add.
-     * @param index   Index to place it in.
+     * Adds a new subsection to the section.
+     *
+     * @param section Subsection to add.
+     * @param index   Index to place it in. If invalid, appends the subsection to the end.
      */
     public void addSection(Section section, int index) {
         if (containsSection(index))
@@ -83,45 +88,52 @@ public class Section extends TextElement implements Serializable {
     }
 
     /**
-     * Checks whether a given section index exists or not.
-     * @param  index Index to check for a section.
-     * @return       Whether or not it exists.
+     * Checks whether a given subsection index exists or not in the section.
+     *
+     * @param index Index to check for a subsection.
+     * @return {@code true} if this section contains the subsection with the given index.
      */
     public boolean containsSection(int index) {
         return index < _sections.size() && index >= 0;
     }
 
     /**
-     * Renames a given section to have the new name.
-     * @param document Document containing the section to be renamed.
-     * @param index    Index of the element to be renamed.
-     * @param id       New name to give the document.
+     * Renames the subsection with the given index in the section.
+     *
+     * @param document Document to be notified the renaming of the subsection.
+     * @param index    Index of the subsection to be renamed.
+     * @param id       New identifier to give to the subsection.
      */
     public void renameSection(Document document, int index, String id) {
         document.renameTextElement(getSection(index), id);
     }
 
     /**
-     * Deletes a given section.
-     * @param document Document from which to remove the section.
-     * @param index    Index of the section to be removed.
+     * Deletes the subsection from the section with the given index.
+     *
+     * @param document Document to be notified the removal of the subsection.
+     * @param index    Index of the subsection to be removed.
      */
     public void removeSection(Document document, int index) {
-        document.removeTextElement(getSection(index));
+        Section section = getSection(index);
+        document.removeTextElement(section);
+        _sections.remove(section);
     }
 
     /**
-     * Returns the number of sub-sections.
-     * @return The number of sections.
+     * Returns the count of subsections in the section.
+     *
+     * @return The count of subsections in this section.
      */
     public int getSectionsCount() {
         return _sections.size();
     }
 
     /**
-     * Adds a new paragraph.
+     * Adds a new paragraph to the section.
+     *
      * @param paragraph The paragraph to be added.
-     * @param index     Index in which to add the paragraph.
+     * @param index     Index in which to add the paragraph. If invalid, appends the paragraph to the end.
      */
     public void addParagraph(Paragraph paragraph, int index) {
         if (containsParagraph(index))
@@ -131,45 +143,52 @@ public class Section extends TextElement implements Serializable {
     }
 
     /**
-     * Returns whether or not a given paragraph exists.
-     * @param  index Index of the paragraph to check for.
-     * @return       Whether or not it exists.
+     * Checks whether a given paragraph index exists or not in the section.
+     *
+     * @param index Index to check for a paragraph.
+     * @return {@code true} if this section contains a paragraph with the given index.
      */
     public boolean containsParagraph(int index) {
         return index < _paragraphs.size() && index >= 0;
     }
 
     /**
-     * Renames a given paragraph.
-     * @param document Document in which to rename the paragraph.
-     * @param index    Index of the paragraph to rename.
-     * @param id       New name to give the paragraph.
+     * Renames the paragraph with the given index in the section.
+     *
+     * @param document Document to be notified the renaming of the paragraph.
+     * @param index    Index of the paragraph to be renamed.
+     * @param id       New identifier to give to the paragraph.
      */
     public void renameParagraph(Document document, int index, String id) {
         document.renameTextElement(getParagraph(index), id);
     }
 
     /**
-     * Removes a given paragraph.
-     * @param document Document in which to remove the paragraph.
-     * @param index    Index of the paragraph to remove.
+     * Deletes the paragraph from the section with the given index.
+     *
+     * @param document Document to be notified the removal of the paragraph.
+     * @param index    Index of the paragraph to be removed.
      */
     public void removeParagraph(Document document, int index) {
-        document.removeTextElement(getParagraph(index));
+        Paragraph paragraph = getParagraph(index);
+        document.removeTextElement(paragraph);
+        _paragraphs.remove(paragraph);
     }
 
     /**
-     * Returns the number of paragraphs.
-     * @return The number of paragraphs.
+     * Returns the count of paragraphs in the section.
+     *
+     * @return The count of paragraphs in this section.
      */
     public int getParagraphsCount() {
         return _paragraphs.size();
     }
 
     /**
-     * Returns the section with the given index.
-     * @param  index Index of the section to return.
-     * @return       The section with a given index.
+     * Returns the section with the given index in the section.
+     *
+     * @param index Index of the section to return.
+     * @return The section with a given index. Null if the index does not exist.
      */
     public Section getSection(int index) {
         if (containsSection(index))
@@ -179,9 +198,10 @@ public class Section extends TextElement implements Serializable {
     }
 
     /**
-     * Returns the paragraph with the given index.
-     * @param  index Index of the paragraph to return.
-     * @return       The paragraph with a given index.
+     * Returns the paragraph with the given index in the section.
+     *
+     * @param index Index of the paragraph to return.
+     * @return The paragraph with a given index. Null if the index does not exist.
      */
     public Paragraph getParagraph(int index) {
         if (containsParagraph(index))
@@ -191,16 +211,18 @@ public class Section extends TextElement implements Serializable {
     }
 
     /**
-     * Returns an iterator for all the paragraphs.
-     * @return The iterator for the paragraphs.
+     * Returns an iterator for all the paragraphs in the section.
+     *
+     * @return The iterator for the paragraphs in this section.
      */
     public Iterator<Paragraph> getParagraphs() {
         return _paragraphs.iterator();
     }
 
     /**
-    * Returns an iterator for all the sections.
-    * @return The iterator for the sections.
+     * Returns an iterator for all the subsections in the section.
+     *
+     * @return The iterator for the subsections in this section.
      */
     public Iterator<Section> getSections() {
         return _sections.iterator();
@@ -208,7 +230,8 @@ public class Section extends TextElement implements Serializable {
 
     /**
      * Returns the section's title.
-     * @return The title.
+     *
+     * @return The title of this section.
      */
     public String getTitle() {
         return _title;
@@ -216,7 +239,8 @@ public class Section extends TextElement implements Serializable {
 
     /**
      * Set's the section's title.
-     * @param title The new title.
+     *
+     * @param title The new title for this section.
      */
     public void setTitle(String title) {
         _title = title;

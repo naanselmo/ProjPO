@@ -2,33 +2,39 @@ package edt.core;
 
 import java.io.Serializable;
 
+/**
+ * Author class. Represents an Author.
+ */
 public class Author implements Comparable<Author>, Serializable {
 
     private String _name;
     private String _email;
 
-/**
- * Author Constructor
- * @param  name  receives the author's name
- * @param  email  receives the author's email
- */
+    /**
+     * Initializes a new Author with the given name and email.
+     *
+     * @param name  Author's name.
+     * @param email Author's email.
+     */
     public Author(String name, String email) {
         _name = name;
         _email = email;
     }
 
-/**
- * Getter method for the name attribute 
- * @return name's attribute value
- */
+    /**
+     * Returns the author's name.
+     *
+     * @return The name of this Author.
+     */
     public String getName() {
         return _name;
     }
 
-/**
- * Getter method for the email attribute
- * @return email's attribute value
- */
+    /**
+     * Returns the author's email.
+     *
+     * @return The email of this Author.
+     */
     public String getEmail() {
         return _email;
     }

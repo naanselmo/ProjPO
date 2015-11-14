@@ -14,7 +14,7 @@ import pt.utl.ist.po.ui.InputString;
 public class AddAuthor extends Command<Editor> {
 
     /**
-     * Creates the AddAuthor command.
+     * Initializes the AddAuthor command.
      *
      * @param editor The editor of the application.
      */

@@ -1,8 +1,7 @@
 package edt.textui.section;
 
+import edt.core.Editor;
 import pt.utl.ist.po.ui.Command;
-
-/* FIXME: import core classes here */
 
 /**
  * Command for removing a subsection of the current section.
@@ -10,9 +9,9 @@ import pt.utl.ist.po.ui.Command;
 public class RemoveSection extends Command<Editor> {
 
     /**
-     * Constructor.
+     * Initializes the RemoveSection command.
      *
-     * @param editor the target entity.
+     * @param editor The editor of the application.
      */
     public RemoveSection(Editor editor) {
         super(MenuEntry.REMOVE_SECTION, editor);

@@ -1,8 +1,7 @@
 package edt.textui.section;
 
+import edt.core.Editor;
 import pt.utl.ist.po.ui.Command;
-
-/* FIXME: import core classes here */
 
 /**
  * Command for changing the content of a paragraph of the current section.
@@ -10,9 +9,9 @@ import pt.utl.ist.po.ui.Command;
 public class ChangeParagraph extends Command<Editor> {
 
     /**
-     * Constructor.
+     * Initializes the ChangeParagraph command.
      *
-     * @param editor the target entity.
+     * @param editor The editor of the application.
      */
     public ChangeParagraph(Editor editor) {
         super(MenuEntry.EDIT_PARAGRAPH, editor);
