@@ -7,15 +7,15 @@ import pt.utl.ist.po.ui.Command;
 /**
  * Command for listing all subsections of the current section.
  */
-public class ListSections extends Command</* FIXME: core class */> {
+public class ListSections extends Command<Editor> {
 
     /**
      * Constructor.
      *
-     * @param ent the target entity.
+     * @param editor the target ent.
      */
-    public ListSections(/* FIXME: decls of argument(s) for receiver(s) */) {
-        super(MenuEntry.LIST_SECTIONS, ent);
+    public ListSections(Editor editor) {
+        super(MenuEntry.LIST_SECTIONS, editor);
     }
 
     /**

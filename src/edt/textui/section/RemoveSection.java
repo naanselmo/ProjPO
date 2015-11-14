@@ -7,15 +7,15 @@ import pt.utl.ist.po.ui.Command;
 /**
  * Command for removing a subsection of the current section.
  */
-public class RemoveSection extends Command</* FIXME: core class */> {
+public class RemoveSection extends Command<Editor> {
 
     /**
      * Constructor.
      *
-     * @param ent the target entity.
+     * @param editor the target entity.
      */
-    public RemoveSection(/* FIXME: decls of argument(s) for receiver(s) */) {
-        super(MenuEntry.REMOVE_SECTION, ent);
+    public RemoveSection(Editor editor) {
+        super(MenuEntry.REMOVE_SECTION, editor);
     }
 
     /**
