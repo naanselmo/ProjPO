@@ -51,8 +51,8 @@ public class Document extends Section implements Serializable {
         return getSize();
     }
 
-    public void addAuthor(Author author) {
-        _authors.add(author);
+    public boolean addAuthor(Author author) {
+        return _authors.add(author);
     }
 
     public Iterator<Author> getAuthors() {
@@ -63,7 +63,7 @@ public class Document extends Section implements Serializable {
         return _path;
     }
 
-    public boolean hasPath(){
+    public boolean hasPath() {
         return _path != null;
     }
 

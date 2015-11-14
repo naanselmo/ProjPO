@@ -1,9 +1,12 @@
 package edt.textui.main;
 
+import edt.core.Document;
 import edt.core.Editor;
+import edt.core.TextElement;
 import pt.utl.ist.po.ui.Command;
-
-/* FIXME: import core classes here */
+import pt.utl.ist.po.ui.Display;
+import pt.utl.ist.po.ui.Form;
+import pt.utl.ist.po.ui.InputString;
 
 /**
  * Command for showing the text element with a given identifier of the current document in the editor.
@@ -11,9 +14,9 @@ import pt.utl.ist.po.ui.Command;
 public class ShowTextElement extends Command<Editor> {
 
     /**
-     * Constructor.
+     * Creates the ShowTextElement command.
      *
-     * @param editor the target entity.
+     * @param editor The editor of the application.
      */
     public ShowTextElement(Editor editor) {
         super(MenuEntry.SHOW_TEXT_ELEMENT, editor);
@@ -25,6 +28,18 @@ public class ShowTextElement extends Command<Editor> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        /* FIXME: implement command */
+        Form form = new Form();
+        InputString id = new InputString(form, Message.requestElementId());
+        form.parse();
+
+        Document document = entity().getDocument();
+        TextElement element = document.getTextElement(id.value());
+        Display display = new Display();
+        if (element != null) {
+            display.add(element.getContent());
+        } else {
+            display.add(Message.noSuchTextElement(id.value()));
+        }
+        display.display();
     }
 }

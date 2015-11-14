@@ -24,14 +24,14 @@ public class Author implements Comparable<Author>, Serializable {
     public boolean equals(Object object) {
         if (object instanceof Author) {
             Author author = (Author) object;
-            return getEmail().equals(author.getEmail());
+            return getName().equals(author.getName());
         }
         return super.equals(object);
     }
 
     @Override
     public int hashCode() {
-        return getEmail().hashCode();
+        return getName().hashCode();
     }
 
     @Override

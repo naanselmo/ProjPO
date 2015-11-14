@@ -1,12 +1,12 @@
 package edt.textui.main;
 
-
+import edt.core.Document;
+import edt.core.Editor;
+import edt.core.Section;
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
 
-import edt.core.Editor;
-import edt.core.Document;
-import edt.core.Section;
+import java.util.Iterator;
 
 /**
  * Command for showing the top sections of the current document in the editor.
@@ -14,9 +14,9 @@ import edt.core.Section;
 public class ListTopSections extends Command<Editor> {
 
     /**
-     * Constructor.
+     * Constructor of the ListTopSections command.
      *
-     * @param editor the target entity.
+     * @param editor The editor of the application.
      */
     public ListTopSections(Editor editor) {
         super(MenuEntry.SHOW_INDEX, editor);
@@ -28,15 +28,13 @@ public class ListTopSections extends Command<Editor> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-       Document doc = entity().getDocument();
-       Iterator iterator= doc.getSections();
-       Display display = new Display();
-       display.addNewLine(doc.getHeadline());
-       while(iterator.hasNext()){
+        Document document = entity().getDocument();
+        Display display = new Display();
+        display.addNewLine(document.getHeadline());
+        Iterator<Section> iterator = document.getSections();
+        while (iterator.hasNext()) {
             display.addNewLine(iterator.next().getHeadline());
-       }
-
-       display.display();
-
+        }
+        display.display();
     }
 }

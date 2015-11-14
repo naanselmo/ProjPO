@@ -49,11 +49,16 @@ public class Section extends TextElement implements Serializable {
     }
 
     public String getHeadline() {
-        return Message.sectionIndexEntry(getId(), getTitle());
+        if(hasId())
+            return Message.sectionIndexEntry(getId(), getTitle());
+        return Message.sectionIndexEntry("", getTitle());
     }
 
     public void addSection(Section section, int index) {
-        _sections.add(index, section);
+        if(containsSection(index))
+            _sections.add(index, section);
+        else
+            _sections.add(section);
     }
 
     public boolean containsSection(int index) {
@@ -73,7 +78,10 @@ public class Section extends TextElement implements Serializable {
     }
 
     public void addParagraph(Paragraph paragraph, int index) {
-        _paragraphs.add(index, paragraph);
+        if(containsParagraph(index))
+            _paragraphs.add(index, paragraph);
+        else
+            _paragraphs.add(paragraph);
     }
 
     public boolean containsParagraph(int index) {

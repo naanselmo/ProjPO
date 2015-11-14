@@ -2,9 +2,9 @@ package edt.textui.main;
 
 import edt.core.Editor;
 import pt.utl.ist.po.ui.Command;
+import pt.utl.ist.po.ui.Form;
+import pt.utl.ist.po.ui.InputString;
 import pt.utl.ist.po.ui.InvalidOperation;
-
-/* FIXME: import core classes here */
 
 /**
  * Command for opening an existing document in the editor.
@@ -12,9 +12,9 @@ import pt.utl.ist.po.ui.InvalidOperation;
 public class OpenDocument extends Command<Editor> {
 
     /**
-     * Constructor.
+     * Constructor of the OpenDocument command.
      *
-     * @param editor the target entity.
+     * @param editor The editor of the application.
      */
     public OpenDocument(Editor editor) {
         super(MenuEntry.OPEN, editor);
@@ -26,6 +26,11 @@ public class OpenDocument extends Command<Editor> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() throws InvalidOperation {
-        /* FIXME: implement command */
+        Form form = new Form();
+        InputString path = new InputString(form, Message.openFile());
+        form.parse();
+
+
+        entity().loadDocument(path.value());
     }
 }

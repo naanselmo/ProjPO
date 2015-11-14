@@ -1,10 +1,11 @@
 package edt.textui.main;
 
+import edt.core.Document;
 import edt.core.Editor;
 import pt.utl.ist.po.ui.Command;
+import pt.utl.ist.po.ui.Form;
+import pt.utl.ist.po.ui.InputString;
 import pt.utl.ist.po.ui.InvalidOperation;
-
-/* FIXME: import core classes here */
 
 /**
  * Command for saving the current document in the editor.
@@ -12,9 +13,9 @@ import pt.utl.ist.po.ui.InvalidOperation;
 public class SaveDocument extends Command<Editor> {
 
     /**
-     * Constructor.
+     * Constructor of the SaveDocument command.
      *
-     * @param editor the target entity.
+     * @param editor The editor of the application.
      */
     public SaveDocument(Editor editor) {
         super(MenuEntry.SAVE, editor);
@@ -26,6 +27,15 @@ public class SaveDocument extends Command<Editor> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() throws InvalidOperation {
-        /* FIXME: implement command */
+        Document document = entity().getDocument();
+        if (document.hasPath()) {
+            entity().saveDocument();
+        } else {
+            Form form = new Form();
+            InputString path = new InputString(form, Message.newSaveAs());
+            form.parse();
+
+            entity().saveNewDocument(path.value());
+        }
     }
 }

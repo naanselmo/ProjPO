@@ -3,17 +3,15 @@ package edt.textui.main;
 import edt.core.Editor;
 import pt.utl.ist.po.ui.Command;
 
-/* FIXME: import core classes here */
-
 /**
  * Command for creating a new document in the editor.
  */
 public class NewDocument extends Command<Editor> {
 
     /**
-     * Constructor.
+     * Creates the NewDocument command.
      *
-     * @param editor the editor.
+     * @param editor The editor of the application.
      */
     public NewDocument(Editor editor) {
         super(MenuEntry.NEW, editor);
@@ -25,6 +23,6 @@ public class NewDocument extends Command<Editor> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        /* FIXME: implement command */
+        entity().createDocument();
     }
 }

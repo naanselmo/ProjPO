@@ -1,24 +1,22 @@
 package edt.textui.main;
 
+import edt.core.Author;
+import edt.core.Document;
 import edt.core.Editor;
 import pt.utl.ist.po.ui.Command;
-import pt.utl.ist.po.ui.display;
-
-/* FIXME: import core classes here */
-import edt.core.Document;
-import edt.core.Author;
-import edt.core.Section;
+import pt.utl.ist.po.ui.Display;
 
 import java.util.Iterator;
+
 /**
  * Command for showing the metadata of the current document in the editor.
  */
 public class ShowMetadata extends Command<Editor> {
 
     /**
-     * Constructor.
+     * Constructor of the ShowMetadata command.
      *
-     * @param editor the target entity.
+     * @param editor The editor of the application.
      */
     public ShowMetadata(Editor editor) {
         super(MenuEntry.SHOW_METADATA, editor);
@@ -34,16 +32,16 @@ public class ShowMetadata extends Command<Editor> {
         Iterator<Author> authorIterator = document.getAuthors();
         Display display = new Display();
 
-        display.addNewLine(documentTitle(document.getTitle()));
+        display.addNewLine(Message.documentTitle(document.getTitle()));
 
-        while(authorIterator.hasNext()){
+        while (authorIterator.hasNext()) {
             Author author = authorIterator.next();
-            display.addNewLine(author(author.getTitle(),author.getTitle()));
+            display.addNewLine(Message.author(author.getName(), author.getEmail()));
         }
 
-        display.addNewLine(documentSections(document.getSectionsCount()));
-        display.addNewLine(documentBytes(document.getDocumentLength()));
-        dispay.addNewLine(documentIdentifiers(document.getTextElementsCount()));
+        display.addNewLine(Message.documentSections(document.getSectionsCount()));
+        display.addNewLine(Message.documentBytes(document.getDocumentLength()));
+        display.addNewLine(Message.documentIdentifiers(document.getTextElementsCount()));
 
         display.display();
     }
