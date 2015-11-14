@@ -29,11 +29,11 @@ public class ShowMetadata extends Command<Editor> {
     @SuppressWarnings("nls")
     public final void execute() {
         Document document = entity().getDocument();
-        Iterator<Author> authorIterator = document.getAuthors();
-        Display display = new Display();
 
+        Display display = new Display();
         display.addNewLine(Message.documentTitle(document.getTitle()));
 
+        Iterator<Author> authorIterator = document.getAuthors();
         while (authorIterator.hasNext()) {
             Author author = authorIterator.next();
             display.addNewLine(Message.author(author.getName(), author.getEmail()));
@@ -42,7 +42,6 @@ public class ShowMetadata extends Command<Editor> {
         display.addNewLine(Message.documentSections(document.getSectionsCount()));
         display.addNewLine(Message.documentBytes(document.getSize()));
         display.addNewLine(Message.documentIdentifiers(document.getTextElementsCount()));
-
         display.display();
     }
 }

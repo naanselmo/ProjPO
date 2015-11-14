@@ -2,7 +2,6 @@ package edt.textui.main;
 
 import edt.core.Document;
 import edt.core.Editor;
-import edt.core.TextElement;
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
 import pt.utl.ist.po.ui.Form;
@@ -32,11 +31,10 @@ public class ShowTextElement extends Command<Editor> {
         InputString id = new InputString(form, Message.requestElementId());
         form.parse();
 
-        Document document = entity().getDocument();
-        TextElement element = document.getTextElement(id.value());
         Display display = new Display();
-        if (element != null) {
-            display.add(element.getContent());
+        Document document = entity().getDocument();
+        if (document.containsTextElement(id.value())) {
+            display.add(document.getTextElement(id.value()).getContent());
         } else {
             display.add(Message.noSuchTextElement(id.value()));
         }
