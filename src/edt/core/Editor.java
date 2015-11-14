@@ -13,7 +13,13 @@ public class Editor {
     private Document _document;
 
     public Editor() {
-        this._document = new NullDocument();
+        String propertyImport = System.getProperty("Import");
+        if (propertyImport != null){
+            Parser parser = new Parser()
+            _document = parser(propertyImport);
+        }
+        else
+            this._document = new NullDocument();
     }
 
     public void createDocument() {
