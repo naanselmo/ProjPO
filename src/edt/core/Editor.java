@@ -47,13 +47,13 @@ public class Editor {
     public void saveDocument() throws FileNotFoundException {
         /* FIXME: IF NO CHANGES WERE DONE DON'T DO SHIT! */
         try {
-            FileOutputStream file = new FileOutputStream(_document.getPath());
+            FileOutputStream file = new FileOutputStream(getDocument().getPath());
             ObjectOutputStream out = new ObjectOutputStream(file);
-            out.writeObject(_document);
+            out.writeObject(getDocument());
             out.close();
             file.close();
         } catch (IOException e) {
-            throw new FileNotFoundException(_document.getPath());
+            throw new FileNotFoundException(getDocument().getPath());
         }
     }
 
@@ -64,7 +64,7 @@ public class Editor {
      * @throws FileNotFoundException If the file was not found.
      */
     public void saveNewDocument(String path) throws FileNotFoundException {
-        _document.setPath(path);
+        getDocument().setPath(path);
         saveDocument();
     }
 

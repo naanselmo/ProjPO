@@ -1,7 +1,7 @@
 package edt.core;
 
 /**
- * TextElement class. Represents a text element.
+ * Textlement class. Represents a text element.
  */
 public abstract class TextElement {
 
@@ -27,7 +27,7 @@ public abstract class TextElement {
      * @return {@code true} if this text element has an identifier with it. Otherwise {@code false}
      */
     public boolean hasId() {
-        return _id != null;
+        return getId() != null;
     }
 
     /**

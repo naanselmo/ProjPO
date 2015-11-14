@@ -24,7 +24,7 @@ public class Paragraph extends TextElement implements Serializable {
      * @return The content of this paragraph.
      */
     public String getContent() {
-        return _text;
+        return getText();
     }
 
     /**
@@ -34,7 +34,7 @@ public class Paragraph extends TextElement implements Serializable {
      */
     @Override
     public int getSize() {
-        return _text.length(); //_text.getBytes().length;
+        return getText().length(); //_text.getBytes().length;
     }
 
     /**

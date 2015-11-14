@@ -138,6 +138,6 @@ public class Document extends Section implements Serializable {
      * @return {@code true} if there is file path associated with this document.
      */
     public boolean hasPath() {
-        return _path != null;
+        return getPath() != null;
     }
 }

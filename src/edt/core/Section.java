@@ -52,7 +52,7 @@ public class Section extends TextElement implements Serializable {
      */
     @Override
     public int getSize() {
-        int size = _title.length(); // _title.getBytes().length;
+        int size = getTitle().length(); // _title.getBytes().length;
 
         for (Paragraph paragraph : _paragraphs)
             size += paragraph.getSize();
