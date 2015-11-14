@@ -5,6 +5,9 @@ package edt.core;
  */
 public class NullDocument extends Document {
 
+/**
+ * Creates a new null document
+ */
     public NullDocument() {
         super("");
     }
