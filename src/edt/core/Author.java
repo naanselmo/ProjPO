@@ -1,5 +1,7 @@
 package edt.core;
 
+import java.io.Serializable;
+
 public class Author implements Comparable<Author>, Serializable {
 
     private String _name;

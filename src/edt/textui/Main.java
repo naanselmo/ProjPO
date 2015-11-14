@@ -10,6 +10,7 @@ import pt.utl.ist.po.ui.UserInteraction;
 public class Main {
 
     public static void main(String[] args) {
+        System.out.println(args.length);
         Editor editor = new Editor();
         MainMenu menu = new MainMenu(editor);
         menu.open();

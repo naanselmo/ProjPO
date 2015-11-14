@@ -24,7 +24,7 @@ public class Document extends Section implements Serializable {
     }
 
     public void renameTextElement(TextElement element, String id) {
-        if(containsTextElement(id))
+        if (containsTextElement(id))
             removeTextElement(getTextElement(id));
         element.setId(id);
         indexTextElement(element);
@@ -61,6 +61,10 @@ public class Document extends Section implements Serializable {
 
     public String getPath() {
         return _path;
+    }
+
+    public boolean hasPath(){
+        return _path != null;
     }
 
     public void setPath(String _path) {

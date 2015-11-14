@@ -1,5 +1,7 @@
 package edt.core;
 
+import java.io.Serializable;
+
 public class Paragraph extends TextElement implements Serializable {
 
     private String _text;
