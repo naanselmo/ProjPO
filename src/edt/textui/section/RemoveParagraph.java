@@ -7,15 +7,15 @@ import pt.utl.ist.po.ui.Command;
 /**
  * Command for removing a paragraph of the current section.
  */
-public class RemoveParagraph extends Command</* FIXME: core class */> {
+public class RemoveParagraph extends Command<Editor> {
 
     /**
      * Constructor.
      *
-     * @param ent the target entity.
+     * @param editor the target entity.
      */
-    public RemoveParagraph(/* FIXME: decls of argument(s) for receiver(s) */) {
-        super(MenuEntry.REMOVE_PARAGRAPH, ent);
+    public RemoveParagraph(Editor editor) {
+        super(MenuEntry.REMOVE_PARAGRAPH, editor);
     }
 
     /**
