@@ -7,15 +7,28 @@ public class Author implements Comparable<Author>, Serializable {
     private String _name;
     private String _email;
 
+/**
+ * Author Constructor
+ * @param  name  receives the author's name
+ * @param  email  receives the author's email
+ */
     public Author(String name, String email) {
         _name = name;
         _email = email;
     }
 
+/**
+ * Getter method for the name attribute 
+ * @return name's attribute value
+ */
     public String getName() {
         return _name;
     }
 
+/**
+ * Getter method for the email attribute
+ * @return email's attribute value
+ */
     public String getEmail() {
         return _email;
     }
