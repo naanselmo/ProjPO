@@ -1,7 +1,6 @@
 package edt.core;
 
 import java.io.Serializable;
-import java.security.MessageDigest;
 
 /**
  * Author class. Represents an Author.
@@ -76,24 +75,5 @@ public class Author implements Comparable<Author>, Serializable {
     public int compareTo(Author author) {
         return getName().compareTo(author.getName());
     }
-
-    /**
-     * Returns the checksum of the document.
-     *
-     * @return The checksum of this document.
-     */
-     public String getChecksum() {
-         StringBuilder toHash = new StringBuilder();
-
-         toHash.append(getName()).append(getEmail());
-
-         try{
-             MessageDigest md = MessageDigest.getInstance("SHA-256");
-             md.update(toHash.toString().getBytes());
-             return new String(md.digest());
-         } catch(Exception ex){
-             ex.printStackTrace();
-         }
-     }
 
 }

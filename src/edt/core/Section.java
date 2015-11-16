@@ -6,7 +6,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.security.MessageDigest;
 
 /**
  * Section class. Represents a Section.
@@ -14,10 +13,9 @@ import java.security.MessageDigest;
 public class Section extends TextElement implements Serializable {
 
     private static final String LINE_SEPARATOR = System.getProperty("line.separator");
-
-    private String _title;
     private final List<Paragraph> _paragraphs;
     private final List<Section> _sections;
+    private String _title;
 
     /**
      * Initializes a new Section.
@@ -250,65 +248,4 @@ public class Section extends TextElement implements Serializable {
         _title = title;
     }
 
-    /**
-     * Equality test between the Section and a given object. This will only be true if the object given is a Section,
-     * if the title is internally the same, if the paragraphs are the internally the same and if the subsections are
-     * internally the same. Also both have to have the same identifiers or no identifiers at all.
-     *
-     * @param object Object to compare this section to.
-     * @return {@code true} if the object given is internally equal to this section.
-     */
-    @Override
-    public boolean equals(Object object) {
-        if (!(object instanceof Section))
-            return false;
-
-        Section section = (Section) object;
-        return (hasId() ? getId().equals(section.getId()) : !section.hasId())
-                && getTitle().equals(section.getTitle())
-                && _paragraphs.equals(section._paragraphs)
-                && _sections.equals(section._sections);
-    }
-
-    /**
-     * Returns the hashCode of the section.
-     *
-     * @return The hashCode of this section.
-     */
-    @Override
-    public int hashCode() {
-        int result = hasId() ? getId().hashCode() : 0;
-        result = 31 * result + getTitle().hashCode();
-        result = 31 * result + _paragraphs.hashCode();
-        result = 31 * result + _sections.hashCode();
-        return result;
-    }
-
-    /**
-     * Returns the checksum of the section.
-     *
-     * @return The checksum of this section.
-     */
-    public String getChecksum() {
-      StringBuilder toHash = new StringBuilder();
-
-      toHash.append(getTitle());
-
-      for (Paragraph paragraph : _paragraphs)
-          toHash.append(paragraph.getChecksum());
-
-      for (Section section : _sections)
-          output.append(section.getChecksum());
-
-      if(hasId())
-        toHash.append(getId());
-
-      try{
-          MessageDigest md = MessageDigest.getInstance("SHA-256");
-          md.update(toHash.toString().getBytes());
-          return new String(md.digest());
-      } catch(Exception ex){
-          ex.printStackTrace();
-      }
-    }
 }

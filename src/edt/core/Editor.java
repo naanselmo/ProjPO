@@ -51,11 +51,13 @@ public class Editor {
      */
     public void saveDocument() throws FileNotFoundException {
         ObjectOutputStream out = null;
-        String currentChecksum = getDocument().getChecksum();
         try {
-            out = new ObjectOutputStream(new FileOutputStream(getDocument().getPath()));
-            if (currentChecksum.equals(_lastChecksum)){
+            String currentChecksum = getDocument().getChecksum();
+            /* Check checksum, if they are the same, no changes were made */
+            if (!currentChecksum.equals(_lastChecksum)) {
+                out = new ObjectOutputStream(new FileOutputStream(getDocument().getPath()));
                 out.writeObject(getDocument());
+                /* Update the checksum*/
                 _lastChecksum = currentChecksum;
             }
         } catch (java.io.FileNotFoundException e) {
@@ -74,9 +76,9 @@ public class Editor {
     }
 
     /**
-     * Links the path to the current {@link Document} and saves the Document to given path.
+     * Links the path to the current {@link Document} and saves the document to given path.
      *
-     * @param path Path of the file to save the Document to.
+     * @param path Path of the file to save the document to.
      * @throws FileNotFoundException If the file was not found.
      */
     public void saveNewDocument(String path) throws FileNotFoundException {
@@ -87,7 +89,7 @@ public class Editor {
     /**
      * Loads the {@link Document} that is withing the file given.
      *
-     * @param path Path of the file to load the Document from.
+     * @param path Path of the file to load the document from.
      * @throws FileNotFoundException If the file was not found.
      */
     public void loadDocument(String path) throws FileNotFoundException {
@@ -95,9 +97,10 @@ public class Editor {
         try {
             in = new ObjectInputStream(new FileInputStream(path));
             _document = (Document) in.readObject();
+            /* Update the checksum*/
             _lastChecksum = getDocument().getChecksum();
         } catch (java.io.FileNotFoundException e) {
-            throw new FileNotFoundException(getDocument().getPath());
+            throw new FileNotFoundException(path);
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         } finally {

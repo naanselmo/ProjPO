@@ -1,17 +1,21 @@
 package edt.core;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.util.*;
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.*;
 
 /**
  * Document class. Represents a document.
  */
 public class Document extends Section implements Serializable {
 
-    private String _path;
     private final SortedSet<Author> _authors;
     private final Map<String, TextElement> _textElements;
+    private String _path;
 
     /**
      * Initializes a new document with a given title.
@@ -142,28 +146,29 @@ public class Document extends Section implements Serializable {
         return getPath() != null;
     }
 
-    /**
-     * Returns the checksum of the document.
-     *
-     * @return The checksum of this document.
-     */
-     public String getChecksum() {
-         StringBuilder toHash = new StringBuilder();
+    public String getChecksum() throws IOException {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
+        objectOutputStream.writeObject(this);
+        objectOutputStream.flush();
+        objectOutputStream.close();
+        byteArrayOutputStream.close();
+        MessageDigest digest = null;
+        try {
+            digest = MessageDigest.getInstance("SHA-256");
+        } catch (NoSuchAlgorithmException e) {
+            try {
+                digest = MessageDigest.getInstance("MD5");
+            } catch (NoSuchAlgorithmException e1) {
+                e1.printStackTrace();
+            }
+        }
+        if (digest != null) {
+            digest.update(byteArrayOutputStream.toByteArray());
+            return new String(digest.digest());
+        }
+        /* We know the algorithm exists, so we are pretty sure we are not going to get here */
+        return "";
+    }
 
-         toHash.append(getPath());
-
-         for (Author author : _authors)
-             toHash.append(author.getChecksum());
-
-         for (Section section : _sections)
-             toHash.append(section.getChecksum());
-
-         try{
-             MessageDigest md = MessageDigest.getInstance("SHA-256");
-             md.update(toHash.toString().getBytes());
-             return new String(md.digest());
-         } catch(Exception ex){
-             ex.printStackTrace();
-         }
-     }
 }
