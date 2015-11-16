@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * Section class. Represents a Section.
+ */
 public class Section extends TextElement implements Serializable {
 
     private static final String LINE_SEPARATOR = System.getProperty("line.separator");

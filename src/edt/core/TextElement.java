@@ -15,7 +15,7 @@ public abstract class TextElement {
     public abstract String getContent();
 
     /**
-     * Returns the number of bytes the text element.
+     * Returns the number of bytes in the text element.
      *
      * @return The size in bytes of this text element.
      */
@@ -38,7 +38,8 @@ public abstract class TextElement {
     }
 
     /**
-     * Returns the identifier associated with the text element. Before calling this please check if this text element
+     * Returns the identifier associated with the text element.
+     * NOTE: Before calling this please check if the text element
      * has an identifier associated with it, otherwise null will be returned.
      *
      * @return id The identifier of this text element. Null if it doesn't have any identifier associated to it.

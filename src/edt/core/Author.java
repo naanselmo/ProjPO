@@ -39,20 +39,38 @@ public class Author implements Comparable<Author>, Serializable {
         return _email;
     }
 
+    /**
+     * Equality test between the Author and a given object. This will only be true if the object given is an Author,
+     * and if they have the same name.
+     *
+     * @param object Object to compare this author to.
+     * @return {@code true} if the object given is internally equal to this author.
+     */
     @Override
     public boolean equals(Object object) {
-        if (object instanceof Author) {
-            Author author = (Author) object;
-            return getName().equals(author.getName());
-        }
-        return super.equals(object);
+        if (!(object instanceof Author))
+            return false;
+        Author author = (Author) object;
+        return getName().equals(author.getName());
     }
 
+    /**
+     * Returns the hashCode of the author.
+     *
+     * @return The hashCode of this author.
+     */
     @Override
     public int hashCode() {
         return getName().hashCode();
     }
 
+    /**
+     * Compares the author with a given one. Will apply the {@link String#compareTo(String)} to compare both
+     * author names in order to be performed an alphabetic sort.
+     *
+     * @param author Author to compare this author to.
+     * @return {@link String#compareTo(String)} using this author's name and the other's name.
+     */
     @Override
     public int compareTo(Author author) {
         return getName().compareTo(author.getName());

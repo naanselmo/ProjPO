@@ -1,7 +1,7 @@
 package edt.core;
 
 /**
- * NullDocument class. Represents a null document. Null pattern applied.
+ * NullDocument class. Represents a null document. Null Object pattern applied.
  */
 public class NullDocument extends Document {
 
