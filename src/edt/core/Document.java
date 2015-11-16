@@ -146,6 +146,13 @@ public class Document extends Section implements Serializable {
         return getPath() != null;
     }
 
+    /**
+     * Calculates a checksum of the document. A String that can represent the whole document
+     * and may be used to compare documents or some sort of revision system.
+     *
+     * @return The checksum of this document.
+     * @throws IOException See {@link ObjectOutputStream}.
+     */
     public String getChecksum() throws IOException {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
@@ -167,7 +174,7 @@ public class Document extends Section implements Serializable {
             digest.update(byteArrayOutputStream.toByteArray());
             return new String(digest.digest());
         }
-        /* We know the algorithm exists, so we are pretty sure we are not going to get here */
+        /* We know both algorithm exists, so we are pretty sure we are not going to get here */
         return "";
     }
 
