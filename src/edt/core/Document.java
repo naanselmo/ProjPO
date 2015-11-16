@@ -9,8 +9,8 @@ import java.util.*;
 public class Document extends Section implements Serializable {
 
     private String _path;
-    private SortedSet<Author> _authors;
-    private Map<String, TextElement> _textElements;
+    private final SortedSet<Author> _authors;
+    private final Map<String, TextElement> _textElements;
 
     /**
      * Initializes a new document with a given title.
@@ -140,4 +140,23 @@ public class Document extends Section implements Serializable {
     public boolean hasPath() {
         return getPath() != null;
     }
+
+    /**
+     * Compares if the document changed in relation to one other.
+     *
+     * @param document Document to compare this document with.
+     * @return {@code true} if they are different or if this document doesn't have a path associated with it.
+     */
+    public boolean changed(Document document) {
+        /*System.out.println("O document e o mesmo internamente? "+ super.equals(document));
+        System.out.println("O documento tem o mesmp path? "+getPath().equals(document.getPath()));
+        System.out.println("O document tem os mesmos elementos de texto? "+_textElements.equals(document._textElements));
+        System.out.println("O documento tem os mesmos autores? "+_authors.equals(document._authors));*/
+        return !hasPath()
+                || !getPath().equals(document.getPath())
+                || !_textElements.equals(document._textElements)
+                || !_authors.equals(document._authors)
+                || !super.equals(document);
+    }
+
 }

@@ -20,7 +20,7 @@ public class Editor {
      * If the property import is not set, it will start with a {@link NullDocument} as the current document.
      */
     public Editor() {
-        this._document = new NullDocument();
+        _document = new NullDocument();
         String propertyImport = System.getProperty("import");
         if (propertyImport != null) {
             Parser parser = new Parser();
@@ -45,15 +45,22 @@ public class Editor {
      * @throws FileNotFoundException If the file was not found.
      */
     public void saveDocument() throws FileNotFoundException {
-        /* FIXME: IF NO CHANGES WERE DONE DON'T DO SHIT! */
+        ObjectOutputStream out = null;
         try {
-            FileOutputStream file = new FileOutputStream(getDocument().getPath());
-            ObjectOutputStream out = new ObjectOutputStream(file);
+            out = new ObjectOutputStream(new FileOutputStream(getDocument().getPath()));
             out.writeObject(getDocument());
-            out.close();
-            file.close();
-        } catch (IOException e) {
+        } catch (java.io.FileNotFoundException e) {
             throw new FileNotFoundException(getDocument().getPath());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (out != null) {
+                try {
+                    out.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 
@@ -75,16 +82,22 @@ public class Editor {
      * @throws FileNotFoundException If the file was not found.
      */
     public void loadDocument(String path) throws FileNotFoundException {
+        ObjectInputStream in = null;
         try {
-            FileInputStream file = new FileInputStream(path);
-            ObjectInputStream in = new ObjectInputStream(file);
+            in = new ObjectInputStream(new FileInputStream(path));
             _document = (Document) in.readObject();
-            in.close();
-            file.close();
-        } catch (IOException e) {
-            throw new FileNotFoundException(path);
-        } catch (ClassNotFoundException e) {
+        } catch (java.io.FileNotFoundException e) {
+            throw new FileNotFoundException(getDocument().getPath());
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
+        } finally {
+            if (in != null) {
+                try {
+                    in.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 

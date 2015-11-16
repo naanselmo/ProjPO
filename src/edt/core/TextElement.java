@@ -1,7 +1,7 @@
 package edt.core;
 
 /**
- * Textlement class. Represents a text element.
+ * TextElement class. Represents a text element.
  */
 public abstract class TextElement {
 

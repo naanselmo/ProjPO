@@ -7,8 +7,8 @@ import java.io.Serializable;
  */
 public class Author implements Comparable<Author>, Serializable {
 
-    private String _name;
-    private String _email;
+    private final String _name;
+    private final String _email;
 
     /**
      * Initializes a new Author with the given name and email.
