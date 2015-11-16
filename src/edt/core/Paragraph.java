@@ -1,6 +1,7 @@
 package edt.core;
 
 import java.io.Serializable;
+import java.security.MessageDigest;
 
 /**
  * Paragraph class. Represents a paragraph.
@@ -79,7 +80,29 @@ public class Paragraph extends TextElement implements Serializable {
     @Override
     public int hashCode() {
         int result = hasId() ? getId().hashCode() : 0;
-        result = 42 * result + getText().hashCode();
+        result = 31 * result + getText().hashCode();
         return result;
     }
+
+     /**
+      * Returns the checksum of the document.
+      *
+      * @return The checksum of this document.
+      */
+      public String getChecksum() {
+          StringBuilder toHash = new StringBuilder();
+
+          toHash.append(getText());
+
+          if(hasId())
+            toHash.append(getId());
+
+          try{
+              MessageDigest md = MessageDigest.getInstance("SHA-256");
+              md.update(toHash.toString().getBytes());
+              return new String(md.digest());
+          } catch(Exception ex){
+              ex.printStackTrace();
+          }
+      }
 }

@@ -16,6 +16,11 @@ public class Editor {
     private Document _document;
 
     /**
+     * The checksum of the last saved state.
+     */
+    private String _lastChecksum;
+
+    /**
      * Initializes a new Editor.
      * If the property import is not set, it will start with a {@link NullDocument} as the current document.
      */
@@ -46,9 +51,13 @@ public class Editor {
      */
     public void saveDocument() throws FileNotFoundException {
         ObjectOutputStream out = null;
+        String currentChecksum = getDocument().getChecksum();
         try {
             out = new ObjectOutputStream(new FileOutputStream(getDocument().getPath()));
-            out.writeObject(getDocument());
+            if (currentChecksum.equals(_lastChecksum)){
+                out.writeObject(getDocument());
+                _lastChecksum = currentChecksum;
+            }
         } catch (java.io.FileNotFoundException e) {
             throw new FileNotFoundException(getDocument().getPath());
         } catch (IOException e) {
@@ -86,6 +95,7 @@ public class Editor {
         try {
             in = new ObjectInputStream(new FileInputStream(path));
             _document = (Document) in.readObject();
+            _lastChecksum = getDocument().getChecksum();
         } catch (java.io.FileNotFoundException e) {
             throw new FileNotFoundException(getDocument().getPath());
         } catch (IOException | ClassNotFoundException e) {

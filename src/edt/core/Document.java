@@ -2,6 +2,7 @@ package edt.core;
 
 import java.io.Serializable;
 import java.util.*;
+import java.security.MessageDigest;
 
 /**
  * Document class. Represents a document.
@@ -142,21 +143,27 @@ public class Document extends Section implements Serializable {
     }
 
     /**
-     * Compares if the document changed in relation to one other.
+     * Returns the checksum of the document.
      *
-     * @param document Document to compare this document with.
-     * @return {@code true} if they are different or if this document doesn't have a path associated with it.
+     * @return The checksum of this document.
      */
-    public boolean changed(Document document) {
-        /*System.out.println("O document e o mesmo internamente? "+ super.equals(document));
-        System.out.println("O documento tem o mesmp path? "+getPath().equals(document.getPath()));
-        System.out.println("O document tem os mesmos elementos de texto? "+_textElements.equals(document._textElements));
-        System.out.println("O documento tem os mesmos autores? "+_authors.equals(document._authors));*/
-        return !hasPath()
-                || !getPath().equals(document.getPath())
-                || !_textElements.equals(document._textElements)
-                || !_authors.equals(document._authors)
-                || !super.equals(document);
-    }
+     public String getChecksum() {
+         StringBuilder toHash = new StringBuilder();
 
+         toHash.append(getPath());
+
+         for (Author author : _authors)
+             toHash.append(author.getChecksum());
+
+         for (Section section : _sections)
+             toHash.append(section.getChecksum());
+
+         try{
+             MessageDigest md = MessageDigest.getInstance("SHA-256");
+             md.update(toHash.toString().getBytes());
+             return new String(md.digest());
+         } catch(Exception ex){
+             ex.printStackTrace();
+         }
+     }
 }

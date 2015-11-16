@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.security.MessageDigest;
 
 /**
  * Section class. Represents a Section.
@@ -277,9 +278,37 @@ public class Section extends TextElement implements Serializable {
     @Override
     public int hashCode() {
         int result = hasId() ? getId().hashCode() : 0;
-        result = 42 * result + getTitle().hashCode();
-        result = 42 * result + _paragraphs.hashCode();
-        result = 42 * result + _sections.hashCode();
+        result = 31 * result + getTitle().hashCode();
+        result = 31 * result + _paragraphs.hashCode();
+        result = 31 * result + _sections.hashCode();
         return result;
+    }
+
+    /**
+     * Returns the checksum of the section.
+     *
+     * @return The checksum of this section.
+     */
+    public String getChecksum() {
+      StringBuilder toHash = new StringBuilder();
+
+      toHash.append(getTitle());
+
+      for (Paragraph paragraph : _paragraphs)
+          toHash.append(paragraph.getChecksum());
+
+      for (Section section : _sections)
+          output.append(section.getChecksum());
+
+      if(hasId())
+        toHash.append(getId());
+
+      try{
+          MessageDigest md = MessageDigest.getInstance("SHA-256");
+          md.update(toHash.toString().getBytes());
+          return new String(md.digest());
+      } catch(Exception ex){
+          ex.printStackTrace();
+      }
     }
 }
