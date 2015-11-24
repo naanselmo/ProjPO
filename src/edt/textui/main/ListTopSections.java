@@ -2,11 +2,9 @@ package edt.textui.main;
 
 import edt.core.Document;
 import edt.core.Editor;
-import edt.core.Section;
+import edt.textui.visitors.TopSectionsVisitor;
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
-
-import java.util.Iterator;
 
 /**
  * Command for showing the top sections of the current document in the editor.
@@ -30,11 +28,10 @@ public class ListTopSections extends Command<Editor> {
     public final void execute() {
         Document document = entity().getDocument();
         Display display = new Display();
-        display.addNewLine(document.getHeadline());
-        Iterator<Section> iterator = document.getSections();
-        while (iterator.hasNext()) {
-            display.addNewLine(iterator.next().getHeadline());
-        }
+        TopSectionsVisitor visitor = new TopSectionsVisitor();
+        visitor.visit(document);
+        for (String line : visitor.getLines())
+            display.addNewLine(line);
         display.display();
     }
 }

@@ -16,7 +16,7 @@ public class EditMenu extends Menu {
      *
      * @param doc
      * @param section
-     **/
+     */
     public EditMenu(Editor editor) {
         super(MenuEntry.TITLE,
                 new Command<?>[]{new ChangeTitle(editor),

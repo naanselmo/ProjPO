@@ -59,6 +59,7 @@ public abstract class TextElement implements Element {
 
     /**
      * Accepts a visitor
+     *
      * @param visitor Visitor to accept
      */
     @Override

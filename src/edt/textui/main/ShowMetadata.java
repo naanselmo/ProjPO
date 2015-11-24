@@ -1,13 +1,10 @@
 package edt.textui.main;
 
-import edt.core.Author;
 import edt.core.Document;
 import edt.core.Editor;
-import edt.core.MetadataPrinter;
+import edt.textui.visitors.MetadataVisitor;
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
-
-import java.util.Iterator;
 
 /**
  * Command for showing the metadata of the current document in the editor.
@@ -30,13 +27,11 @@ public class ShowMetadata extends Command<Editor> {
     @SuppressWarnings("nls")
     public final void execute() {
         Document document = entity().getDocument();
-
         Display display = new Display();
-        MetadataPrinter printer = new MetadataPrinter();
-        printer.visit(document);
-        for(String s : printer.getContent()){
-            display.addNewLine(s);
-        }
+        MetadataVisitor visitor = new MetadataVisitor();
+        visitor.visit(document);
+        for (String line : visitor.getLines())
+            display.addNewLine(line);
         display.display();
     }
 }

@@ -5,7 +5,7 @@ import pt.utl.ist.po.ui.UserInteraction;
 
 /**
  * The main class of the edt application.
- **/
+ */
 public class Editor {
 
     public static void main(String[] args) {

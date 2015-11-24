@@ -78,6 +78,7 @@ public class Author implements Element, Comparable<Author>, Serializable {
 
     /**
      * Accepts a visitor
+     *
      * @param visitor Visitor to be accepted
      */
     @Override

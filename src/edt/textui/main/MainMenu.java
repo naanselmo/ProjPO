@@ -9,8 +9,8 @@ import pt.utl.ist.po.ui.Menu;
 /**
  * Represents the main menu of this application. This is the first menu
  * shown to the users.
- ***/
-
+ * *
+ */
 public class MainMenu extends Menu {
 
     /**
