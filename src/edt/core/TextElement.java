@@ -3,7 +3,7 @@ package edt.core;
 /**
  * TextElement class. Represents a text element.
  */
-public abstract class TextElement {
+public abstract class TextElement implements Element {
 
     private String _id;
 
@@ -55,6 +55,15 @@ public abstract class TextElement {
      */
     public void setId(String id) {
         _id = id;
+    }
+
+    /**
+     * Accepts a visitor
+     * @param visitor Visitor to accept
+     */
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
     }
 
 }

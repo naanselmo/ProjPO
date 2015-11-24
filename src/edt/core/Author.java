@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Author class. Represents an Author.
  */
-public class Author implements Comparable<Author>, Serializable {
+public class Author implements Element, Comparable<Author>, Serializable {
 
     private final String _name;
     private final String _email;
@@ -76,4 +76,12 @@ public class Author implements Comparable<Author>, Serializable {
         return getName().compareTo(author.getName());
     }
 
+    /**
+     * Accepts a visitor
+     * @param visitor Visitor to be accepted
+     */
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
+    }
 }
