@@ -3,6 +3,7 @@ package edt.textui.main;
 import edt.core.Author;
 import edt.core.Document;
 import edt.core.Editor;
+import edt.core.MetadataPrinter;
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
 
@@ -31,17 +32,11 @@ public class ShowMetadata extends Command<Editor> {
         Document document = entity().getDocument();
 
         Display display = new Display();
-        display.addNewLine(Message.documentTitle(document.getTitle()));
-
-        Iterator<Author> authorIterator = document.getAuthors();
-        while (authorIterator.hasNext()) {
-            Author author = authorIterator.next();
-            display.addNewLine(Message.author(author.getName(), author.getEmail()));
+        MetadataPrinter printer = new MetadataPrinter();
+        printer.visit(document);
+        for(String s : printer.getContent()){
+            display.addNewLine(s);
         }
-
-        display.addNewLine(Message.documentSections(document.getSectionsCount()));
-        display.addNewLine(Message.documentBytes(document.getSize()));
-        display.addNewLine(Message.documentIdentifiers(document.getTextElementsCount()));
         display.display();
     }
 }
