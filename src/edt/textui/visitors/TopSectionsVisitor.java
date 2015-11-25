@@ -1,6 +1,7 @@
 package edt.textui.visitors;
 
 import edt.core.*;
+import edt.textui.main.Message;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -19,7 +20,7 @@ public class TopSectionsVisitor implements Visitor {
 
     @Override
     public void visit(Document document) {
-        _content.add(document.getHeadline());
+        _content.add("{" + document.getTitle() + "}");
         Iterator<Section> iterator = document.getSections();
         while (iterator.hasNext())
             iterator.next().accept(this);
@@ -35,7 +36,10 @@ public class TopSectionsVisitor implements Visitor {
 
     @Override
     public void visit(Section section) {
-        _content.add(section.getHeadline());
+        if(section.hasId()) 
+            _content.add(Message.sectionIndexEntry(section.getId(),section.getTitle()));
+        else
+            _content.add(Message.sectionIndexEntry("",section.getTitle()));
     }
 
     @Override
