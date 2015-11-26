@@ -1,20 +1,22 @@
 package edt.textui.section;
 
-import edt.core.Editor;
-import pt.utl.ist.po.ui.Command;
+import edt.core.Document;
+import edt.core.Section;
+import edt.textui.core.ComposedCommand;
 
 /**
  * Command for removing a subsection of the current section.
  */
-public class RemoveSection extends Command<Editor> {
+public class RemoveSection extends ComposedCommand<Document, Section> {
 
     /**
      * Initializes the RemoveSection command.
      *
-     * @param editor The editor of the application.
+     * @param document The current document of the application.
+     * @param section The current section being edited.
      */
-    public RemoveSection(Editor editor) {
-        super(MenuEntry.REMOVE_SECTION, editor);
+    public RemoveSection(Document document, Section section) {
+        super(MenuEntry.REMOVE_SECTION, document, section);
     }
 
     /**

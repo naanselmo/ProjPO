@@ -1,20 +1,22 @@
 package edt.textui.section;
 
-import edt.core.Editor;
-import pt.utl.ist.po.ui.Command;
+import edt.core.Document;
+import edt.core.Section;
+import edt.textui.core.ComposedCommand;
 
 /**
  * Command for indexing a paragraph (nomear um parágrafo 2.2.9) of the current section.
  */
-public class IndexParagraph extends Command<Editor> {
+public class IndexParagraph extends ComposedCommand<Document, Section> {
 
     /**
      * Initializes the IndexParagraph command.
      *
-     * @param editor The editor of the application.
+     * @param document The current document of the application.
+     * @param section The current section being edited.
      */
-    public IndexParagraph(Editor editor) {
-        super(MenuEntry.NAME_PARAGRAPH, editor);
+    public IndexParagraph(Document document, Section section) {
+        super(MenuEntry.NAME_PARAGRAPH, document, section);
     }
 
     /**

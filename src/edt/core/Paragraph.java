@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Paragraph class. Represents a paragraph.
  */
-public class Paragraph extends TextElement implements Serializable {
+public class Paragraph extends TextElement implements Element {
 
     private String _text;
 
@@ -53,6 +53,16 @@ public class Paragraph extends TextElement implements Serializable {
      */
     public void setText(String text) {
         _text = text;
+    }
+
+    /**
+     * Accepts a visitor
+     *
+     * @param visitor Visitor to accept
+     */
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
     }
 
 }

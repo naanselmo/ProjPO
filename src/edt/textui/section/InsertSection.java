@@ -1,20 +1,23 @@
 package edt.textui.section;
 
-import edt.core.Editor;
+import edt.core.Section;
 import pt.utl.ist.po.ui.Command;
+import pt.utl.ist.po.ui.Form;
+import pt.utl.ist.po.ui.InputInteger;
+import pt.utl.ist.po.ui.InputString;
 
 /**
  * Command for adding a subsection to current section.
  */
-public class InsertSection extends Command<Editor> {
+public class InsertSection extends Command<Section> {
 
     /**
      * Initializes the InsertSection command.
      *
-     * @param editor The editor of the application.
+     * @param section The current section being edited.
      */
-    public InsertSection(Editor editor) {
-        super(MenuEntry.INSERT_SECTION, editor);
+    public InsertSection(Section section) {
+        super(MenuEntry.INSERT_SECTION, section);
     }
 
     /**
@@ -23,6 +26,11 @@ public class InsertSection extends Command<Editor> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        /* FIXME: implement command */
+        Form form = new Form();
+        InputInteger localId = new InputInteger(form, Message.requestSectionId());
+        InputString title = new InputString(form, Message.requestSectionTitle());
+        form.parse();
+
+        entity().addSection(new Section(title.value()), localId.value());
     }
 }

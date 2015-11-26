@@ -11,7 +11,7 @@ import java.util.*;
 /**
  * Document class. Represents a document.
  */
-public class Document extends Section implements Serializable {
+public class Document extends Section {
 
     private final SortedSet<Author> _authors;
     private final Map<String, TextElement> _textElements;

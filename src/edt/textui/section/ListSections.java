@@ -1,20 +1,20 @@
 package edt.textui.section;
 
-import edt.core.Editor;
+import edt.core.Section;
 import pt.utl.ist.po.ui.Command;
 
 /**
  * Command for listing all subsections of the current section.
  */
-public class ListSections extends Command<Editor> {
+public class ListSections extends Command<Section> {
 
     /**
      * Initializes the ListSections command.
      *
-     * @param editor The editor of the application.
+     * @param section The current section being edited.
      */
-    public ListSections(Editor editor) {
-        super(MenuEntry.LIST_SECTIONS, editor);
+    public ListSections(Section section) {
+        super(MenuEntry.LIST_SECTIONS, section);
     }
 
     /**

@@ -1,9 +1,11 @@
 package edt.core;
 
+import java.io.Serializable;
+
 /**
  * TextElement class. Represents a text element.
  */
-public abstract class TextElement implements Element {
+public abstract class TextElement implements Serializable, Element{
 
     private String _id;
 

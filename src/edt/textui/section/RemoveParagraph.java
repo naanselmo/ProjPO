@@ -1,20 +1,22 @@
 package edt.textui.section;
 
-import edt.core.Editor;
-import pt.utl.ist.po.ui.Command;
+import edt.core.Document;
+import edt.core.Section;
+import edt.textui.core.ComposedCommand;
 
 /**
  * Command for removing a paragraph of the current section.
  */
-public class RemoveParagraph extends Command<Editor> {
+public class RemoveParagraph extends ComposedCommand<Document, Section> {
 
     /**
      * Initializes the RemoveParagraph command.
      *
-     * @param editor The editor of the application.
+     * @param document The current document of the application.
+     * @param section The current section being edited.
      */
-    public RemoveParagraph(Editor editor) {
-        super(MenuEntry.REMOVE_PARAGRAPH, editor);
+    public RemoveParagraph(Document document, Section section) {
+        super(MenuEntry.REMOVE_PARAGRAPH, document, section);
     }
 
     /**

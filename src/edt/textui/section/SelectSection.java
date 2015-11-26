@@ -1,20 +1,22 @@
 package edt.textui.section;
 
-import edt.core.Editor;
-import pt.utl.ist.po.ui.Command;
+import edt.core.Section;
+import edt.core.Document;
+import edt.textui.core.ComposedCommand;
 
 /**
  * Command for selecting a subsection of the current section and edit it.
  */
-public class SelectSection extends Command<Editor> {
+public class SelectSection extends ComposedCommand<Document, Section> {
 
     /**
      * Initializes the SelectSection command.
      *
-     * @param editor The editor of the application.
+     * @param document The current document of the application.
+     * @param section The current section being edited.
      */
-    public SelectSection(Editor editor) {
-        super(MenuEntry.SELECT_SECTION, editor);
+    public SelectSection(Document document, Section section) {
+        super(MenuEntry.SELECT_SECTION, document, section);
     }
 
     /**

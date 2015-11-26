@@ -1,6 +1,7 @@
 package edt.textui.section;
 
-import edt.core.Editor;
+import edt.core.Section;
+import edt.core.Document;
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Menu;
 
@@ -14,22 +15,22 @@ public class EditMenu extends Menu {
      * Initializes the edit menu of the application. It has all available options for editing
      * a section.
      *
-     * @param doc
-     * @param section
+     * @param document The current document of the application.
+     * @param section The current section being edited.
      */
-    public EditMenu(Editor editor) {
+    public EditMenu(Document document, Section section) {
         super(MenuEntry.TITLE,
-                new Command<?>[]{new ChangeTitle(editor),
-                        new ListSections(editor),
-                        new ShowSection(editor),
-                        new SelectSection(editor),
-                        new InsertSection(editor),
-                        new IndexSection(editor),
-                        new RemoveSection(editor),
-                        new InsertParagraph(editor),
-                        new IndexParagraph(editor),
-                        new ChangeParagraph(editor),
-                        new RemoveParagraph(editor),
+                new Command<?>[]{
+                        new IndexParagraph(document, section),
+                        new IndexSection(document, section),
+                        new RemoveParagraph(document, section),
+                        new RemoveSection(document, section),
+                        new SelectSection(document, section),
+                        new ChangeTitle(section),
+                        new ListSections(section),
+                        new ShowSection(section),
+                        new InsertSection(section),
+                        new ChangeParagraph(section)
                 });
     }
 }

@@ -22,8 +22,9 @@ public class TopSectionsVisitor implements Visitor {
     public void visit(Document document) {
         _content.add("{" + document.getTitle() + "}");
         Iterator<Section> iterator = document.getSections();
-        while (iterator.hasNext())
+        while (iterator.hasNext()){
             iterator.next().accept(this);
+        }
     }
 
     @Override

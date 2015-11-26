@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Section class. Represents a Section.
  */
-public class Section extends TextElement implements Serializable {
+public class Section extends TextElement implements Element {
 
     private static final String LINE_SEPARATOR = System.getProperty("line.separator");
     private final List<Paragraph> _paragraphs;
@@ -246,6 +246,16 @@ public class Section extends TextElement implements Serializable {
      */
     public void setTitle(String title) {
         _title = title;
+    }
+
+    /**
+     * Accepts a visitor
+     *
+     * @param visitor Visitor to accept
+     */
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
     }
 
 }

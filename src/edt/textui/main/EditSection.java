@@ -1,6 +1,7 @@
 package edt.textui.main;
 
 import edt.core.Editor;
+import edt.core.Document;
 import edt.textui.section.EditMenu;
 import pt.utl.ist.po.ui.Command;
 
@@ -24,7 +25,8 @@ public class EditSection extends Command<Editor> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        new EditMenu(entity()).open();
+        Document document = entity().getDocument();
+        new EditMenu(document, document).open();
     }
 }
 

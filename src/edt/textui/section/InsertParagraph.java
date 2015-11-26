@@ -1,20 +1,20 @@
 package edt.textui.section;
 
-import edt.core.Editor;
+import edt.core.Section;
 import pt.utl.ist.po.ui.Command;
 
 /**
  * Command for adding a paragraph to the current section.
  */
-public class InsertParagraph extends Command<Editor> {
+public class InsertParagraph extends Command<Section> {
 
     /**
      * Initializes the InsertParagraph command.
      *
-     * @param editor The editor of the application.
+     * @param section The current section being edited.
      */
-    public InsertParagraph(Editor editor) {
-        super(MenuEntry.INSERT_PARAGRAPH, editor);
+    public InsertParagraph(Section section) {
+        super(MenuEntry.INSERT_PARAGRAPH, section);
     }
 
     /**
