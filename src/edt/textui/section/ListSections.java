@@ -1,7 +1,15 @@
 package edt.textui.section;
 
 import edt.core.Section;
+import edt.textui.visitors.ListSectionsVisitor;
+
+import edt.textui.section.Message;
+
 import pt.utl.ist.po.ui.Command;
+import pt.utl.ist.po.ui.Display;
+
+
+
 
 /**
  * Command for listing all subsections of the current section.
@@ -23,6 +31,12 @@ public class ListSections extends Command<Section> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        /* FIXME: implement command */
+        Display display = new Display();
+        ListSectionsVisitor listSection = new ListSectionsVisitor();
+        listSection.visit(entity());
+        for(String string : listSection.getLines()){
+            display.addNewLine(string);
+        }
+        display.display();
     }
 }

@@ -2,7 +2,14 @@ package edt.textui.section;
 
 import edt.core.Section;
 import edt.core.Document;
+
+import edt.textui.section.Message;
 import edt.textui.core.ComposedCommand;
+
+import pt.utl.ist.po.ui.Form;
+import pt.utl.ist.po.ui.Display;
+import pt.utl.ist.po.ui.InputInteger;
+
 
 /**
  * Command for selecting a subsection of the current section and edit it.
@@ -25,6 +32,19 @@ public class SelectSection extends ComposedCommand<Document, Section> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        /* FIXME: implement command */
+        Form form = new Form();
+        Display display = new Display();
+        InputInteger localId = new InputInteger(form, Message.requestSectionId());
+        form.parse();
+
+        if(!entity().containsSection(localId.value())){
+             display.addNewLine(Message.noSuchSection(localId.value()));
+            display.display();
+        }else{
+            display.addNewLine(Message.newActiveSection(localId.value()));
+            Section section = entity().getSection(localId.value()); 
+            display.display();
+            new EditMenu(secondEntity(), section).open();
+        }
     }
 }

@@ -1,7 +1,16 @@
 package edt.textui.section;
 
 import edt.core.Section;
+
+import edt.textui.section.Message;
+
 import pt.utl.ist.po.ui.Command;
+import pt.utl.ist.po.ui.InputString;
+import pt.utl.ist.po.ui.Form;
+
+
+
+
 
 /**
  * Command for changing the title of the current section.
@@ -23,6 +32,12 @@ public class ChangeTitle extends Command<Section> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        /* FIXME: implement command */
+        Form form = new Form();
+        InputString title = new InputString(form, Message.requestSectionTitle());
+        form.parse();
+
+        entity().setTitle(title.value());
+        //NOTE: After finish editor, change to visitor
+
     }
 }

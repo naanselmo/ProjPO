@@ -7,13 +7,7 @@ import java.util.List;
 import java.util.LinkedList;
 import java.util.Iterator;
 
-public class TextElementVisitor implements Visitor{
-
-	private List<String> _content;
-
-	public TextElementVisitor(){
-		_content = new LinkedList<>();
-	}
+public class TextElementVisitor extends FormaterVisiter {
 	
 	public void visit(Document document){
 	} 

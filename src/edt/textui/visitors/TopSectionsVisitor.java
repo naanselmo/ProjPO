@@ -10,14 +10,8 @@ import java.util.List;
 /**
  * A top sections visitor. Responsible to gather top sections information of a document.
  */
-public class TopSectionsVisitor implements Visitor {
-
-    private List<String> _content;
-
-    public TopSectionsVisitor() {
-        this._content = new LinkedList<>();
-    }
-
+public class TopSectionsVisitor extends FormaterVisiter {
+    
     @Override
     public void visit(Document document) {
         _content.add("{" + document.getTitle() + "}");
@@ -47,7 +41,4 @@ public class TopSectionsVisitor implements Visitor {
     public void visit(Paragraph paragraph) {
     }
 
-    public List<String> getLines() {
-        return _content;
-    }
 }

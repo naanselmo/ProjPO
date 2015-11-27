@@ -10,13 +10,7 @@ import java.util.List;
 /**
  * A metadata visitor. Responsible to gather metadata information of a document.
  */
-public class MetadataVisitor implements Visitor {
-
-    private List<String> _content;
-
-    public MetadataVisitor() {
-        _content = new LinkedList<>();
-    }
+public class MetadataVisitor extends FormaterVisiter  {
 
     public void visit(Document document) {
         _content.add(Message.documentTitle(document.getTitle()));
@@ -41,7 +35,4 @@ public class MetadataVisitor implements Visitor {
     public void visit(Paragraph paragraph) {
     }
 
-    public List<String> getLines() {
-        return _content;
-    }
 }
