@@ -4,13 +4,11 @@ import edt.core.*;
 import edt.textui.main.Message;
 
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
 
 /**
  * A metadata visitor. Responsible to gather metadata information of a document.
  */
-public class MetadataVisitor extends FormaterVisiter  {
+public class MetadataVisitor extends FormatterVisitor {
 
     public void visit(Document document) {
         _content.add(Message.documentTitle(document.getTitle()));

@@ -13,7 +13,7 @@ public class RemoveSection extends ComposedCommand<Document, Section> {
      * Initializes the RemoveSection command.
      *
      * @param document The current document of the application.
-     * @param section The current section being edited.
+     * @param section  The current section being edited.
      */
     public RemoveSection(Document document, Section section) {
         super(MenuEntry.REMOVE_SECTION, document, section);

@@ -1,10 +1,9 @@
 package edt.textui.section;
 
 import edt.core.Section;
+import edt.textui.visitors.TextElementVisitor;
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
-
-import edt.textui.visitors.TextElementVisitor;
 
 /**
  * Command for showing the content of current section.
@@ -31,7 +30,7 @@ public class ShowSection extends Command<Section> {
         TextElementVisitor textElement = new TextElementVisitor();
         textElement.visit(entity());
 
-        for(String string : textElement.getLines()){
+        for (String string : textElement.getLines()) {
             display.addNewLine(string);
         }
         display.display();

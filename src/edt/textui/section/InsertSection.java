@@ -7,7 +7,6 @@ import pt.utl.ist.po.ui.InputInteger;
 import pt.utl.ist.po.ui.InputString;
 
 
-
 /**
  * Command for adding a subsection to current section.
  */

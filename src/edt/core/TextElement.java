@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * TextElement class. Represents a text element.
  */
-public abstract class TextElement implements Serializable, Element{
+public abstract class TextElement implements Element, Serializable {
 
     private String _id;
 

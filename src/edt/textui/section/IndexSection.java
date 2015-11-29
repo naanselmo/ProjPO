@@ -13,7 +13,7 @@ public class IndexSection extends ComposedCommand<Document, Section> {
      * Initializes the IndexSection command.
      *
      * @param document The current document of the application.
-     * @param section The current section being edited.
+     * @param section  The current section being edited.
      */
     public IndexSection(Document document, Section section) {
         super(MenuEntry.NAME_SECTION, document, section);

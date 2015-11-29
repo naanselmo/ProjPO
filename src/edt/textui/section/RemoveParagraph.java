@@ -13,7 +13,7 @@ public class RemoveParagraph extends ComposedCommand<Document, Section> {
      * Initializes the RemoveParagraph command.
      *
      * @param document The current document of the application.
-     * @param section The current section being edited.
+     * @param section  The current section being edited.
      */
     public RemoveParagraph(Document document, Section section) {
         super(MenuEntry.REMOVE_PARAGRAPH, document, section);

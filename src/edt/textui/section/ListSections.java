@@ -2,11 +2,8 @@ package edt.textui.section;
 
 import edt.core.Section;
 import edt.textui.visitors.ListSectionsVisitor;
-
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
-
-
 
 
 /**
@@ -32,7 +29,7 @@ public class ListSections extends Command<Section> {
         Display display = new Display();
         ListSectionsVisitor listSection = new ListSectionsVisitor();
         listSection.visit(entity());
-        for(String string : listSection.getLines()){
+        for (String string : listSection.getLines()) {
             display.addNewLine(string);
         }
         display.display();

@@ -1,7 +1,5 @@
 package edt.core;
 
-import java.io.Serializable;
-
 /**
  * Paragraph class. Represents a paragraph.
  */

@@ -1,7 +1,7 @@
 package edt.textui.main;
 
-import edt.core.Editor;
 import edt.core.Document;
+import edt.core.Editor;
 import edt.textui.section.EditMenu;
 import pt.utl.ist.po.ui.Command;
 

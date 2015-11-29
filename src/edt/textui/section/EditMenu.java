@@ -1,7 +1,7 @@
 package edt.textui.section;
 
-import edt.core.Section;
 import edt.core.Document;
+import edt.core.Section;
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Menu;
 
@@ -16,7 +16,7 @@ public class EditMenu extends Menu {
      * a section.
      *
      * @param document The current document of the application.
-     * @param section The current section being edited.
+     * @param section  The current section being edited.
      */
     public EditMenu(Document document, Section section) {
         super(MenuEntry.TITLE,

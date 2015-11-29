@@ -1,13 +1,11 @@
 package edt.textui.section;
 
-import edt.core.Section;
 import edt.core.Paragraph;
-
+import edt.core.Section;
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Form;
-import pt.utl.ist.po.ui.InputString;
 import pt.utl.ist.po.ui.InputInteger;
-
+import pt.utl.ist.po.ui.InputString;
 
 
 /**
@@ -31,8 +29,8 @@ public class InsertParagraph extends Command<Section> {
     @SuppressWarnings("nls")
     public final void execute() {
         Form form = new Form();
-        InputInteger localId = new InputInteger(form,Message.requestParagraphId());
-        InputString content = new InputString(form,Message.requestParagraphContent());
+        InputInteger localId = new InputInteger(form, Message.requestParagraphId());
+        InputString content = new InputString(form, Message.requestParagraphContent());
         form.parse();
 
         entity().addParagraph(new Paragraph(content.value()), localId.value());

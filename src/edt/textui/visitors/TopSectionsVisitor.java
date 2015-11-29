@@ -4,19 +4,17 @@ import edt.core.*;
 import edt.textui.main.Message;
 
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
 
 /**
  * A top sections visitor. Responsible to gather top sections information of a document.
  */
-public class TopSectionsVisitor extends FormaterVisiter {
-    
+public class TopSectionsVisitor extends FormatterVisitor {
+
     @Override
     public void visit(Document document) {
         _content.add("{" + document.getTitle() + "}");
         Iterator<Section> iterator = document.getSections();
-        while (iterator.hasNext()){
+        while (iterator.hasNext()) {
             iterator.next().accept(this);
         }
     }
@@ -31,10 +29,10 @@ public class TopSectionsVisitor extends FormaterVisiter {
 
     @Override
     public void visit(Section section) {
-        if(section.hasId()) 
-            _content.add(Message.sectionIndexEntry(section.getId(),section.getTitle()));
+        if (section.hasId())
+            _content.add(Message.sectionIndexEntry(section.getId(), section.getTitle()));
         else
-            _content.add(Message.sectionIndexEntry("",section.getTitle()));
+            _content.add(Message.sectionIndexEntry("", section.getTitle()));
     }
 
     @Override

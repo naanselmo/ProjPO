@@ -13,7 +13,7 @@ public class IndexParagraph extends ComposedCommand<Document, Section> {
      * Initializes the IndexParagraph command.
      *
      * @param document The current document of the application.
-     * @param section The current section being edited.
+     * @param section  The current section being edited.
      */
     public IndexParagraph(Document document, Section section) {
         super(MenuEntry.NAME_PARAGRAPH, document, section);
