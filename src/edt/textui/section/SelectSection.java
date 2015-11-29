@@ -3,7 +3,6 @@ package edt.textui.section;
 import edt.core.Section;
 import edt.core.Document;
 
-import edt.textui.section.Message;
 import edt.textui.core.ComposedCommand;
 
 import pt.utl.ist.po.ui.Form;

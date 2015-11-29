@@ -3,8 +3,6 @@ package edt.textui.section;
 import edt.core.Section;
 import edt.textui.visitors.ListSectionsVisitor;
 
-import edt.textui.section.Message;
-
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
 

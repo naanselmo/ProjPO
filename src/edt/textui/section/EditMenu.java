@@ -30,6 +30,7 @@ public class EditMenu extends Menu {
                         new ListSections(section),
                         new ShowSection(section),
                         new InsertSection(section),
+                        new InsertParagraph(section),
                         new ChangeParagraph(section)
                 });
     }

@@ -2,8 +2,6 @@ package edt.textui.section;
 
 import edt.core.Section;
 
-import edt.textui.section.Message;
-
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.InputString;
 import pt.utl.ist.po.ui.Form;
