@@ -31,8 +31,8 @@ public class ShowTextElement extends Command<Editor> {
         InputString id = new InputString(form, Message.requestElementId());
         form.parse();
 
-        Display display = new Display();
         Document document = entity().getDocument();
+        Display display = new Display();
         if (document.containsTextElement(id.value())) {
             display.add(document.getTextElement(id.value()).getContent());
         } else {

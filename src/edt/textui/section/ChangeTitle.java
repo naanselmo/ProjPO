@@ -31,7 +31,5 @@ public class ChangeTitle extends Command<Section> {
         form.parse();
 
         entity().setTitle(title.value());
-        //NOTE: After finish editor, change to visitor
-
     }
 }

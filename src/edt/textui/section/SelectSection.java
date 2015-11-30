@@ -30,18 +30,18 @@ public class SelectSection extends ComposedCommand<Document, Section> {
     @SuppressWarnings("nls")
     public final void execute() {
         Form form = new Form();
-        Display display = new Display();
         InputInteger localId = new InputInteger(form, Message.requestSectionId());
         form.parse();
 
-        if (!entity().containsSection(localId.value())) {
-            display.addNewLine(Message.noSuchSection(localId.value()));
-            display.display();
-        } else {
+        Display display = new Display();
+        if (entity().containsSection(localId.value())) {
             display.addNewLine(Message.newActiveSection(localId.value()));
             Section section = entity().getSection(localId.value());
             display.display();
             new EditMenu(secondEntity(), section).open();
+        } else {
+            display.addNewLine(Message.noSuchSection(localId.value()));
+            display.display();
         }
     }
 }

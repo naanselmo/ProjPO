@@ -117,7 +117,14 @@ public class Section extends TextElement implements Element {
      */
     public void removeSection(Document document, int index) {
         Section section = getSection(index);
-        document.removeTextElement(section);
+        if (section.hasId())
+            document.removeTextElement(section);
+        for (int i = section.getParagraphsCount() - 1; i >= 0; i--) {
+            section.removeParagraph(document, i);
+        }
+        for (int i = section.getSectionsCount() - 1; i >= 0; i--) {
+            section.removeSection(document, i);
+        }
         _sections.remove(section);
     }
 
@@ -172,7 +179,8 @@ public class Section extends TextElement implements Element {
      */
     public void removeParagraph(Document document, int index) {
         Paragraph paragraph = getParagraph(index);
-        document.removeTextElement(paragraph);
+        if (paragraph.hasId())
+            document.removeTextElement(paragraph);
         _paragraphs.remove(paragraph);
     }
 

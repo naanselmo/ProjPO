@@ -3,9 +3,13 @@ package edt.textui.section;
 import edt.core.Document;
 import edt.core.Section;
 import edt.textui.core.ComposedCommand;
+import pt.utl.ist.po.ui.Display;
+import pt.utl.ist.po.ui.Form;
+import pt.utl.ist.po.ui.InputInteger;
+import pt.utl.ist.po.ui.InputString;
 
 /**
- * Command for indexing ia subsection (nomear secção 2.2.6) the current section .
+ * Command for indexing ia subsection the current section .
  */
 public class IndexSection extends ComposedCommand<Document, Section> {
 
@@ -25,6 +29,22 @@ public class IndexSection extends ComposedCommand<Document, Section> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        /* FIXME: implement command */
+        Form form = new Form();
+        InputInteger localId = new InputInteger(form, Message.requestSectionId());
+        InputString id = new InputString(form, Message.requestUniqueId());
+        form.parse();
+
+        Display display = new Display();
+        int local = localId.value();
+        if (entity().containsSection(local)) {
+            Section section = entity().getSection(local);
+            if (section.hasId()) {
+                display.addNewLine(Message.sectionNameChanged());
+            }
+            entity().renameSection(secondEntity(), local, id.value());
+        } else {
+            display.addNewLine(Message.noSuchSection(local));
+        }
+        display.display();
     }
 }

@@ -26,16 +26,18 @@ public class ChangeParagraph extends Command<Section> {
     public final void execute() {
         Form form = new Form();
         InputInteger localId = new InputInteger(form, Message.requestParagraphId());
-        if (!entity().containsParagraph(localId.value())) {
-            form.parse();
-            Display display = new Display();
-            display.addNewLine(Message.noSuchParagraph(localId.value()));
-            display.display();
-        } else {
+        form.parse();
+
+        int local = localId.value();
+        if (entity().containsParagraph(local)) {
             InputString content = new InputString(form, Message.requestParagraphContent());
             form.parse();
-            Paragraph paragraph = entity().getParagraph(localId.value());
+            Paragraph paragraph = entity().getParagraph(local);
             paragraph.setText(content.value());
+        } else {
+            Display display = new Display();
+            display.addNewLine(Message.noSuchParagraph(local));
+            display.display();
         }
 
     }
