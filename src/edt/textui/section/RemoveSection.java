@@ -9,16 +9,16 @@ import pt.utl.ist.po.ui.InputInteger;
 /**
  * Command for removing a subsection of the current section.
  */
-public class RemoveSection extends ComposedCommand<Document, Section> {
+public class RemoveSection extends ComposedCommand<Section, Document> {
 
     /**
      * Initializes the RemoveSection command.
      *
-     * @param document The current document of the application.
      * @param section  The current section being edited.
+     * @param document The current document of the application.
      */
-    public RemoveSection(Document document, Section section) {
-        super(MenuEntry.REMOVE_SECTION, document, section);
+    public RemoveSection(Section section, Document document) {
+        super(MenuEntry.REMOVE_SECTION, section, document);
     }
 
     /**

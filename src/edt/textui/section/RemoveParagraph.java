@@ -10,16 +10,16 @@ import pt.utl.ist.po.ui.InputInteger;
 /**
  * Command for removing a paragraph of the current section.
  */
-public class RemoveParagraph extends ComposedCommand<Document, Section> {
+public class RemoveParagraph extends ComposedCommand<Section, Document> {
 
     /**
      * Initializes the RemoveParagraph command.
      *
-     * @param document The current document of the application.
      * @param section  The current section being edited.
+     * @param document The current document of the application.
      */
-    public RemoveParagraph(Document document, Section section) {
-        super(MenuEntry.REMOVE_PARAGRAPH, document, section);
+    public RemoveParagraph(Section section, Document document) {
+        super(MenuEntry.REMOVE_PARAGRAPH, section, document);
     }
 
     /**

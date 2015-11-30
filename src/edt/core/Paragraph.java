@@ -17,15 +17,6 @@ public class Paragraph extends TextElement implements Element {
     }
 
     /**
-     * Returns the paragraph's content.
-     *
-     * @return The content of this paragraph.
-     */
-    public String getContent() {
-        return getText();
-    }
-
-    /**
      * Returns the paragraph's size.
      *
      * @return The size of this paragraph.

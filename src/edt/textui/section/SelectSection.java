@@ -11,16 +11,16 @@ import pt.utl.ist.po.ui.InputInteger;
 /**
  * Command for selecting a subsection of the current section and edit it.
  */
-public class SelectSection extends ComposedCommand<Document, Section> {
+public class SelectSection extends ComposedCommand<Section, Document> {
 
     /**
      * Initializes the SelectSection command.
      *
-     * @param document The current document of the application.
      * @param section  The current section being edited.
+     * @param document The current document of the application.
      */
-    public SelectSection(Document document, Section section) {
-        super(MenuEntry.SELECT_SECTION, document, section);
+    public SelectSection(Section section, Document document) {
+        super(MenuEntry.SELECT_SECTION, section, document);
     }
 
     /**

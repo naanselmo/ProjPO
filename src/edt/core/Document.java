@@ -90,16 +90,6 @@ public class Document extends Section {
     }
 
     /**
-     * Returns the headline of the document.
-     *
-     * @return The headline of this document.
-     */
-    @Override
-    public String getHeadline() {
-        return "{" + getTitle() + "}";
-    }
-
-    /**
      * Adds an Author to the document.
      *
      * @param author Author to add to this document.

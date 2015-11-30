@@ -11,16 +11,16 @@ import pt.utl.ist.po.ui.InputString;
 /**
  * Command for indexing ia subsection the current section .
  */
-public class IndexSection extends ComposedCommand<Document, Section> {
+public class IndexSection extends ComposedCommand<Section, Document> {
 
     /**
      * Initializes the IndexSection command.
      *
-     * @param document The current document of the application.
      * @param section  The current section being edited.
+     * @param document The current document of the application.
      */
-    public IndexSection(Document document, Section section) {
-        super(MenuEntry.NAME_SECTION, document, section);
+    public IndexSection(Section section, Document document) {
+        super(MenuEntry.NAME_SECTION, section, document);
     }
 
     /**

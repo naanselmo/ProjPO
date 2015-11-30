@@ -21,11 +21,11 @@ public class EditMenu extends Menu {
     public EditMenu(Document document, Section section) {
         super(MenuEntry.TITLE,
                 new Command<?>[]{
-                        new IndexParagraph(document, section),
-                        new IndexSection(document, section),
-                        new RemoveParagraph(document, section),
-                        new RemoveSection(document, section),
-                        new SelectSection(document, section),
+                        new IndexParagraph(section, document),
+                        new IndexSection(section, document),
+                        new RemoveParagraph(section, document),
+                        new RemoveSection(section, document),
+                        new SelectSection(section, document),
                         new ChangeTitle(section),
                         new ListSections(section),
                         new ShowSection(section),

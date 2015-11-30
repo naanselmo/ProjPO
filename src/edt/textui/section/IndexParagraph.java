@@ -12,16 +12,16 @@ import pt.utl.ist.po.ui.InputString;
 /**
  * Command for indexing a paragraph of the current section.
  */
-public class IndexParagraph extends ComposedCommand<Document, Section> {
+public class IndexParagraph extends ComposedCommand<Section, Document> {
 
     /**
      * Initializes the IndexParagraph command.
      *
-     * @param document The current document of the application.
      * @param section  The current section being edited.
+     * @param document The current document of the application.
      */
-    public IndexParagraph(Document document, Section section) {
-        super(MenuEntry.NAME_PARAGRAPH, document, section);
+    public IndexParagraph(Section section, Document document) {
+        super(MenuEntry.NAME_PARAGRAPH, section, document);
     }
 
     /**

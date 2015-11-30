@@ -10,13 +10,6 @@ public abstract class TextElement implements Element, Serializable {
     private String _id;
 
     /**
-     * Returns the text element content.
-     *
-     * @return The content of this text element.
-     */
-    public abstract String getContent();
-
-    /**
      * Returns the number of bytes in the text element.
      *
      * @return The size in bytes of this text element.

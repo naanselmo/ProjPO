@@ -1,5 +1,5 @@
 package edt.core;
 
-public interface Element {
+interface Element {
     void accept(Visitor visitor);
 }

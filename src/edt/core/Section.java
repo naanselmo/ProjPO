@@ -1,7 +1,5 @@
 package edt.core;
 
-import edt.textui.main.Message;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -11,7 +9,6 @@ import java.util.List;
  */
 public class Section extends TextElement implements Element {
 
-    private static final String LINE_SEPARATOR = System.getProperty("line.separator");
     private final List<Paragraph> _paragraphs;
     private final List<Section> _sections;
     private String _title;
@@ -25,25 +22,6 @@ public class Section extends TextElement implements Element {
         _title = title;
         _paragraphs = new ArrayList<>();
         _sections = new ArrayList<>();
-    }
-
-    /**
-     * Returns the section's content.
-     *
-     * @return The content of this section.
-     */
-    public String getContent() {
-        StringBuilder output = new StringBuilder();
-
-        output.append(getHeadline()).append(LINE_SEPARATOR);
-
-        for (Paragraph paragraph : _paragraphs)
-            output.append(paragraph.getContent()).append(LINE_SEPARATOR);
-
-        for (Section section : _sections)
-            output.append(section.getContent()).append(LINE_SEPARATOR);
-
-        return output.toString();
     }
 
     /**
@@ -62,17 +40,6 @@ public class Section extends TextElement implements Element {
             size += section.getSize();
 
         return size;
-    }
-
-    /**
-     * Returns the headline, with its formatting being defined within the {@link edt.textui.main.Message} class.
-     *
-     * @return The formatted headline of this section.
-     */
-    public String getHeadline() {
-        if (hasId())
-            return Message.sectionIndexEntry(getId(), getTitle());
-        return Message.sectionIndexEntry("", getTitle());
     }
 
     /**
