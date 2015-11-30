@@ -2,6 +2,8 @@ package edt.textui.main;
 
 import edt.core.Document;
 import edt.core.Editor;
+import edt.textui.visitors.FormatterVisitor;
+import edt.textui.visitors.TextElementVisitor;
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
 import pt.utl.ist.po.ui.Form;
@@ -34,7 +36,10 @@ public class ShowTextElement extends Command<Editor> {
         Document document = entity().getDocument();
         Display display = new Display();
         if (document.containsTextElement(id.value())) {
-            display.add(document.getTextElement(id.value()).getContent());
+            FormatterVisitor visitor = new TextElementVisitor();
+            visitor.visit(document.getTextElement(id.value()));
+            for (String line : visitor.getLines())
+                display.addNewLine(line);
         } else {
             display.add(Message.noSuchTextElement(id.value()));
         }

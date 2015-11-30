@@ -1,6 +1,7 @@
 package edt.textui.section;
 
 import edt.core.Section;
+import edt.textui.visitors.FormatterVisitor;
 import edt.textui.visitors.ListSectionsVisitor;
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
@@ -27,7 +28,7 @@ public class ListSections extends Command<Section> {
     @SuppressWarnings("nls")
     public final void execute() {
         Display display = new Display();
-        ListSectionsVisitor listSection = new ListSectionsVisitor();
+        FormatterVisitor listSection = new ListSectionsVisitor();
         listSection.visit(entity());
         for (String string : listSection.getLines()) {
             display.addNewLine(string);

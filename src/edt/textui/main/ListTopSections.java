@@ -2,6 +2,7 @@ package edt.textui.main;
 
 import edt.core.Document;
 import edt.core.Editor;
+import edt.textui.visitors.FormatterVisitor;
 import edt.textui.visitors.TopSectionsVisitor;
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
@@ -28,7 +29,7 @@ public class ListTopSections extends Command<Editor> {
     public final void execute() {
         Document document = entity().getDocument();
         Display display = new Display();
-        TopSectionsVisitor visitor = new TopSectionsVisitor();
+        FormatterVisitor visitor = new TopSectionsVisitor();
         visitor.visit(document);
         for (String line : visitor.getLines())
             display.addNewLine(line);

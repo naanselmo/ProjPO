@@ -2,6 +2,7 @@ package edt.textui.main;
 
 import edt.core.Document;
 import edt.core.Editor;
+import edt.textui.visitors.FormatterVisitor;
 import edt.textui.visitors.MetadataVisitor;
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
@@ -28,7 +29,7 @@ public class ShowMetadata extends Command<Editor> {
     public final void execute() {
         Document document = entity().getDocument();
         Display display = new Display();
-        MetadataVisitor visitor = new MetadataVisitor();
+        FormatterVisitor visitor = new MetadataVisitor();
         visitor.visit(document);
         for (String line : visitor.getLines())
             display.addNewLine(line);
