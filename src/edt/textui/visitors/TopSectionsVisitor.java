@@ -38,6 +38,7 @@ public class TopSectionsVisitor extends FormatterVisitor<ElementFormatter> {
 
     /**
      * Visits a section. Will add it's format to the content of this visitor.
+     *
      * @param section Section to visit.
      */
     @Override

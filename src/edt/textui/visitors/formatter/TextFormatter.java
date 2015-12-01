@@ -24,6 +24,7 @@ public class TextFormatter implements ElementFormatter {
     /**
      * Formats a section to plain text. Will just return the section's identifier inside brackets followed by
      * the section's title inside curly brackets. If the section doesn't have an identifier, empty brackets will appear.
+     *
      * @param section Section to format.
      * @return Section's identifier inside brackets followed by the section's title inside curly brackets.
      */
@@ -36,6 +37,7 @@ public class TextFormatter implements ElementFormatter {
 
     /**
      * Formats a paragraph to plain text. Will just return the paragraph's content.
+     *
      * @param paragraph Paragraph to format.
      * @return Paragraph's content.
      */

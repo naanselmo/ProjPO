@@ -36,6 +36,7 @@ public class TextElementVisitor extends FormatterVisitor<ElementFormatter> {
     /**
      * Visits a section. Will add it's format, all it's subsections and all it's paragraphs formatted
      * to the content of this visitor.
+     *
      * @param section Section to visit.
      */
     public void visit(Section section) {
@@ -46,6 +47,7 @@ public class TextElementVisitor extends FormatterVisitor<ElementFormatter> {
     /**
      * Visits a section. Will add all it's subsections and all it's paragraphs formatted
      * to the content of this visitor.
+     *
      * @param section Section to visit.
      */
     private void visitBody(Section section) {
@@ -61,6 +63,7 @@ public class TextElementVisitor extends FormatterVisitor<ElementFormatter> {
 
     /**
      * Visits a paragraph. Will add it's format to the content of this visitor.
+     *
      * @param paragraph Paragraph to visit.
      */
     public void visit(Paragraph paragraph) {

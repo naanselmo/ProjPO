@@ -34,6 +34,7 @@ public class ListSectionsVisitor extends FormatterVisitor<ElementFormatter> {
 
     /**
      * Visits a section. Will add it's subsections to the content of this visitor.
+     *
      * @param section Section to visit.
      */
     @Override
@@ -44,6 +45,10 @@ public class ListSectionsVisitor extends FormatterVisitor<ElementFormatter> {
     /**
      * Will visit all of the subsections of the given section. Will format all subsections and add them to
      * the content of this visitor, accordingly to the formatter associated with this visitor.
+     * <p>
+     * NOTE: Will visit the subsections of the given section without calling accept.
+     * Will only call accept on them to visit their subsections recursively.
+     *
      * @param section Section to visit.
      */
     private void visitSubsection(Section section) {

@@ -34,8 +34,9 @@ public abstract class TextElement implements Element, Serializable {
 
     /**
      * Returns the identifier associated with the text element.
-     * NOTE: Before calling this please check if the text element
-     * has an identifier associated with it, otherwise null will be returned.
+     * <p>
+     * NOTE: Before calling this please check if the text element has an identifier associated with it,
+     * otherwise null will be returned.
      *
      * @return id The identifier of this text element. Null if it doesn't have any identifier associated to it.
      */
