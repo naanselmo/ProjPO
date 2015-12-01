@@ -29,10 +29,10 @@ public class InsertParagraph extends Command<Section> {
     @SuppressWarnings("nls")
     public final void execute() {
         Form form = new Form();
-        InputInteger localId = new InputInteger(form, Message.requestParagraphId());
-        InputString content = new InputString(form, Message.requestParagraphContent());
+        InputInteger localIdInput = new InputInteger(form, Message.requestParagraphId());
+        InputString contentInput = new InputString(form, Message.requestParagraphContent());
         form.parse();
 
-        entity().addParagraph(new Paragraph(content.value()), localId.value());
+        entity().addParagraph(new Paragraph(contentInput.value()), localIdInput.value());
     }
 }

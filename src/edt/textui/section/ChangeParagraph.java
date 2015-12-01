@@ -25,17 +25,17 @@ public class ChangeParagraph extends Command<Section> {
     @SuppressWarnings("nls")
     public final void execute() {
         Form form = new Form();
-        InputInteger localId = new InputInteger(form, Message.requestParagraphId());
-        InputString content = new InputString(form, Message.requestParagraphContent());
+        InputInteger localIdInput = new InputInteger(form, Message.requestParagraphId());
+        InputString contentInput = new InputString(form, Message.requestParagraphContent());
         form.parse();
 
-        int local = localId.value();
-        if (entity().containsParagraph(local)) {
-            Paragraph paragraph = entity().getParagraph(local);
-            paragraph.setText(content.value());
+        int localId = localIdInput.value();
+        if (entity().containsParagraph(localId)) {
+            Paragraph paragraph = entity().getParagraph(localId);
+            paragraph.setText(contentInput.value());
         } else {
             Display display = new Display();
-            display.addNewLine(Message.noSuchParagraph(local));
+            display.addNewLine(Message.noSuchParagraph(localId));
             display.display();
         }
 

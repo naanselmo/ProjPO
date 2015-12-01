@@ -29,14 +29,15 @@ public class AddAuthor extends Command<Editor> {
     @SuppressWarnings("nls")
     public final void execute() {
         Form form = new Form();
-        InputString name = new InputString(form, Message.requestAuthorName());
-        InputString email = new InputString(form, Message.requestEmail());
+        InputString nameInput = new InputString(form, Message.requestAuthorName());
+        InputString emailInput = new InputString(form, Message.requestEmail());
         form.parse();
 
         Document document = entity().getDocument();
-        if (!document.addAuthor(new Author(name.value(), email.value()))) {
+        String name = nameInput.value();
+        if (!document.addAuthor(new Author(name, emailInput.value()))) {
             Display display = new Display();
-            display.add(Message.duplicateAuthor(name.value()));
+            display.add(Message.duplicateAuthor(name));
             display.display();
         }
     }

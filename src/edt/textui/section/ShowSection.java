@@ -26,9 +26,9 @@ public class ShowSection extends Command<Section> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        Display display = new Display();
         FormatterVisitor textElementVisitor = new TextElementVisitor();
         entity().accept(textElementVisitor);
+        Display display = new Display();
         for (String string : textElementVisitor.getLines()) {
             display.addNewLine(string);
         }

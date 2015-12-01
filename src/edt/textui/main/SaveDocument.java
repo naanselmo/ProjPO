@@ -32,10 +32,10 @@ public class SaveDocument extends Command<Editor> {
             entity().saveDocument();
         } else {
             Form form = new Form();
-            InputString path = new InputString(form, Message.newSaveAs());
+            InputString pathInput = new InputString(form, Message.newSaveAs());
             form.parse();
 
-            entity().saveNewDocument(path.value());
+            entity().saveNewDocument(pathInput.value());
         }
     }
 }

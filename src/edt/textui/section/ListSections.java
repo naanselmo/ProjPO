@@ -27,9 +27,9 @@ public class ListSections extends Command<Section> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        Display display = new Display();
         FormatterVisitor listSectionsVisitor = new ListSectionsVisitor();
         entity().accept(listSectionsVisitor);
+        Display display = new Display();
         for (String string : listSectionsVisitor.getLines()) {
             display.addNewLine(string);
         }

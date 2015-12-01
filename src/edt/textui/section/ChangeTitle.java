@@ -27,9 +27,9 @@ public class ChangeTitle extends Command<Section> {
     @SuppressWarnings("nls")
     public final void execute() {
         Form form = new Form();
-        InputString title = new InputString(form, Message.requestSectionTitle());
+        InputString titleInput = new InputString(form, Message.requestSectionTitle());
         form.parse();
 
-        entity().setTitle(title.value());
+        entity().setTitle(titleInput.value());
     }
 }

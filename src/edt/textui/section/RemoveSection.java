@@ -28,12 +28,12 @@ public class RemoveSection extends ComposedCommand<Section, Document> {
     @SuppressWarnings("nls")
     public final void execute() {
         Form form = new Form();
-        InputInteger localId = new InputInteger(form, Message.requestSectionId());
+        InputInteger localIdInput = new InputInteger(form, Message.requestSectionId());
         form.parse();
 
-        int local = localId.value();
-        if (entity().containsSection(local)) {
-            entity().removeSection(secondEntity(), local);
+        int localId = localIdInput.value();
+        if (entity().containsSection(localId)) {
+            entity().removeSection(secondEntity(), localId);
         }
     }
 }

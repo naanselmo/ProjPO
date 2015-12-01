@@ -28,10 +28,10 @@ public class InsertSection extends Command<Section> {
     @SuppressWarnings("nls")
     public final void execute() {
         Form form = new Form();
-        InputInteger localId = new InputInteger(form, Message.requestSectionId());
-        InputString title = new InputString(form, Message.requestSectionTitle());
+        InputInteger localIdInput = new InputInteger(form, Message.requestSectionId());
+        InputString titleInput = new InputString(form, Message.requestSectionTitle());
         form.parse();
 
-        entity().addSection(new Section(title.value()), localId.value());
+        entity().addSection(new Section(titleInput.value()), localIdInput.value());
     }
 }

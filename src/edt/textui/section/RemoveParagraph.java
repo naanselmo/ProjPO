@@ -29,15 +29,15 @@ public class RemoveParagraph extends ComposedCommand<Section, Document> {
     @SuppressWarnings("nls")
     public final void execute() {
         Form form = new Form();
-        InputInteger localId = new InputInteger(form, Message.requestParagraphId());
+        InputInteger localIdInput = new InputInteger(form, Message.requestParagraphId());
         form.parse();
 
-        int local = localId.value();
-        if (entity().containsParagraph(local)) {
-            entity().removeParagraph(secondEntity(), local);
+        int localId = localIdInput.value();
+        if (entity().containsParagraph(localId)) {
+            entity().removeParagraph(secondEntity(), localId);
         } else {
             Display display = new Display();
-            display.addNewLine(Message.noSuchParagraph(local));
+            display.addNewLine(Message.noSuchParagraph(localId));
             display.display();
         }
     }

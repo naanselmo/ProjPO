@@ -28,9 +28,9 @@ public class ShowMetadata extends Command<Editor> {
     @SuppressWarnings("nls")
     public final void execute() {
         Document document = entity().getDocument();
-        Display display = new Display();
         FormatterVisitor visitor = new MetadataVisitor();
         document.accept(visitor);
+        Display display = new Display();
         for (String line : visitor.getLines())
             display.addNewLine(line);
         display.display();

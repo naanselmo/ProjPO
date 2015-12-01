@@ -27,9 +27,9 @@ public class OpenDocument extends Command<Editor> {
     @SuppressWarnings("nls")
     public final void execute() throws InvalidOperation {
         Form form = new Form();
-        InputString path = new InputString(form, Message.openFile());
+        InputString pathInput = new InputString(form, Message.openFile());
         form.parse();
 
-        entity().loadDocument(path.value());
+        entity().loadDocument(pathInput.value());
     }
 }

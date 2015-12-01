@@ -31,20 +31,20 @@ public class IndexParagraph extends ComposedCommand<Section, Document> {
     @SuppressWarnings("nls")
     public final void execute() {
         Form form = new Form();
-        InputInteger localId = new InputInteger(form, Message.requestParagraphId());
-        InputString id = new InputString(form, Message.requestUniqueId());
+        InputInteger localIdInput = new InputInteger(form, Message.requestParagraphId());
+        InputString uniqueIdInput = new InputString(form, Message.requestUniqueId());
         form.parse();
 
+        int localId = localIdInput.value();
         Display display = new Display();
-        int local = localId.value();
-        if (entity().containsParagraph(local)) {
-            Paragraph paragraph = entity().getParagraph(local);
+        if (entity().containsParagraph(localId)) {
+            Paragraph paragraph = entity().getParagraph(localId);
             if (paragraph.hasId()) {
                 display.addNewLine(Message.paragraphNameChanged());
             }
-            entity().renameParagraph(secondEntity(), local, id.value());
+            entity().renameParagraph(secondEntity(), localId, uniqueIdInput.value());
         } else {
-            display.addNewLine(Message.noSuchParagraph(local));
+            display.addNewLine(Message.noSuchParagraph(localId));
         }
         display.display();
     }

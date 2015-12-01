@@ -30,18 +30,19 @@ public class ShowTextElement extends Command<Editor> {
     @SuppressWarnings("nls")
     public final void execute() {
         Form form = new Form();
-        InputString id = new InputString(form, Message.requestElementId());
+        InputString elementIdInput = new InputString(form, Message.requestElementId());
         form.parse();
 
         Document document = entity().getDocument();
+        String elementId = elementIdInput.value();
         Display display = new Display();
-        if (document.containsTextElement(id.value())) {
+        if (document.containsTextElement(elementId)) {
             FormatterVisitor visitor = new TextElementVisitor();
-            document.getTextElement(id.value()).accept(visitor);
+            document.getTextElement(elementId).accept(visitor);
             for (String line : visitor.getLines())
                 display.addNewLine(line);
         } else {
-            display.add(Message.noSuchTextElement(id.value()));
+            display.add(Message.noSuchTextElement(elementId));
         }
         display.display();
     }

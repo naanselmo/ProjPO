@@ -30,20 +30,20 @@ public class IndexSection extends ComposedCommand<Section, Document> {
     @SuppressWarnings("nls")
     public final void execute() {
         Form form = new Form();
-        InputInteger localId = new InputInteger(form, Message.requestSectionId());
-        InputString id = new InputString(form, Message.requestUniqueId());
+        InputInteger localIdInput = new InputInteger(form, Message.requestSectionId());
+        InputString uniqueIdInput = new InputString(form, Message.requestUniqueId());
         form.parse();
 
+        int localId = localIdInput.value();
         Display display = new Display();
-        int local = localId.value();
-        if (entity().containsSection(local)) {
-            Section section = entity().getSection(local);
+        if (entity().containsSection(localId)) {
+            Section section = entity().getSection(localId);
             if (section.hasId()) {
                 display.addNewLine(Message.sectionNameChanged());
             }
-            entity().renameSection(secondEntity(), local, id.value());
+            entity().renameSection(secondEntity(), localId, uniqueIdInput.value());
         } else {
-            display.addNewLine(Message.noSuchSection(local));
+            display.addNewLine(Message.noSuchSection(localId));
         }
         display.display();
     }
