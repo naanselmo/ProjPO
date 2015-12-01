@@ -45,9 +45,9 @@ public class Paragraph extends TextElement implements Element {
     }
 
     /**
-     * Accepts a visitor
+     * Accepts a visitor.
      *
-     * @param visitor Visitor to accept
+     * @param visitor Visitor to accept.
      */
     @Override
     public void accept(Visitor visitor) {

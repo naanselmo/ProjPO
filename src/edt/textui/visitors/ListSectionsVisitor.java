@@ -1,15 +1,21 @@
 package edt.textui.visitors;
 
-import edt.core.*;
+import edt.core.Author;
+import edt.core.Document;
+import edt.core.Paragraph;
+import edt.core.Section;
 import edt.textui.main.Message;
 
 import java.util.Iterator;
 
-public class ListSectionsVisitor extends FormatterVisitor {
+/**
+ * A list sections visitor. Responsible to gather section information of a section or document.
+ */
+public class ListSectionsVisitor extends ContentVisitor {
 
     @Override
     public void visit(Document document) {
-        visit((Section) document);
+        visitSubsection(document);
     }
 
     @Override
@@ -17,11 +23,11 @@ public class ListSectionsVisitor extends FormatterVisitor {
     }
 
     @Override
-    public void visit(TextElement element) {
+    public void visit(Section section) {
+        visitSubsection(section);
     }
 
-    @Override
-    public void visit(Section section) {
+    private void visitSubsection(Section section) {
         Iterator<Section> sectionIterator = section.getSections();
         while (sectionIterator.hasNext()) {
             Section subsection = sectionIterator.next();

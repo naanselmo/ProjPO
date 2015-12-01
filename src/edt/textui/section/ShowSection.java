@@ -1,10 +1,12 @@
 package edt.textui.section;
 
 import edt.core.Section;
-import edt.textui.visitors.FormatterVisitor;
+import edt.textui.visitors.ContentVisitor;
 import edt.textui.visitors.TextElementVisitor;
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
+
+import java.util.Iterator;
 
 /**
  * Command for showing the content of current section.
@@ -26,12 +28,12 @@ public class ShowSection extends Command<Section> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        FormatterVisitor textElementVisitor = new TextElementVisitor();
-        entity().accept(textElementVisitor);
+        ContentVisitor visitor = new TextElementVisitor();
+        entity().accept(visitor);
         Display display = new Display();
-        for (String string : textElementVisitor.getLines()) {
-            display.addNewLine(string);
-        }
+        Iterator<String> lineIterator = visitor.getLines();
+        while (lineIterator.hasNext())
+            display.addNewLine(lineIterator.next());
         display.display();
     }
 }

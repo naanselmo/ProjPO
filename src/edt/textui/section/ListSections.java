@@ -1,10 +1,12 @@
 package edt.textui.section;
 
 import edt.core.Section;
-import edt.textui.visitors.FormatterVisitor;
+import edt.textui.visitors.ContentVisitor;
 import edt.textui.visitors.ListSectionsVisitor;
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
+
+import java.util.Iterator;
 
 
 /**
@@ -27,12 +29,12 @@ public class ListSections extends Command<Section> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        FormatterVisitor listSectionsVisitor = new ListSectionsVisitor();
-        entity().accept(listSectionsVisitor);
+        ContentVisitor visitor = new ListSectionsVisitor();
+        entity().accept(visitor);
         Display display = new Display();
-        for (String string : listSectionsVisitor.getLines()) {
-            display.addNewLine(string);
-        }
+        Iterator<String> lineIterator = visitor.getLines();
+        while (lineIterator.hasNext())
+            display.addNewLine(lineIterator.next());
         display.display();
     }
 }

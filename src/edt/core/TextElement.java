@@ -52,15 +52,5 @@ public abstract class TextElement implements Element, Serializable {
         _id = id;
     }
 
-    /**
-     * Accepts a visitor
-     *
-     * @param visitor Visitor to accept
-     */
-    @Override
-    public void accept(Visitor visitor) {
-        visitor.visit(this);
-    }
-
 }
     

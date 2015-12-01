@@ -2,12 +2,14 @@ package edt.textui.main;
 
 import edt.core.Document;
 import edt.core.Editor;
-import edt.textui.visitors.FormatterVisitor;
+import edt.textui.visitors.ContentVisitor;
 import edt.textui.visitors.TextElementVisitor;
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
 import pt.utl.ist.po.ui.Form;
 import pt.utl.ist.po.ui.InputString;
+
+import java.util.Iterator;
 
 /**
  * Command for showing the text element with a given identifier of the current document in the editor.
@@ -37,10 +39,11 @@ public class ShowTextElement extends Command<Editor> {
         String elementId = elementIdInput.value();
         Display display = new Display();
         if (document.containsTextElement(elementId)) {
-            FormatterVisitor visitor = new TextElementVisitor();
+            ContentVisitor visitor = new TextElementVisitor();
             document.getTextElement(elementId).accept(visitor);
-            for (String line : visitor.getLines())
-                display.addNewLine(line);
+            Iterator<String> lineIterator = visitor.getLines();
+            while (lineIterator.hasNext())
+                display.addNewLine(lineIterator.next());
         } else {
             display.add(Message.noSuchTextElement(elementId));
         }

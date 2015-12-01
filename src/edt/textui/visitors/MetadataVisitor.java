@@ -1,6 +1,9 @@
 package edt.textui.visitors;
 
-import edt.core.*;
+import edt.core.Author;
+import edt.core.Document;
+import edt.core.Paragraph;
+import edt.core.Section;
 import edt.textui.main.Message;
 
 import java.util.Iterator;
@@ -8,7 +11,7 @@ import java.util.Iterator;
 /**
  * A metadata visitor. Responsible to gather metadata information of a document.
  */
-public class MetadataVisitor extends FormatterVisitor {
+public class MetadataVisitor extends ContentVisitor {
 
     public void visit(Document document) {
         _content.add(Message.documentTitle(document.getTitle()));
@@ -22,9 +25,6 @@ public class MetadataVisitor extends FormatterVisitor {
 
     public void visit(Author author) {
         _content.add(Message.author(author.getName(), author.getEmail()));
-    }
-
-    public void visit(TextElement element) {
     }
 
     public void visit(Section section) {

@@ -1,6 +1,9 @@
 package edt.textui.visitors;
 
-import edt.core.*;
+import edt.core.Author;
+import edt.core.Document;
+import edt.core.Paragraph;
+import edt.core.Section;
 import edt.textui.main.Message;
 
 import java.util.Iterator;
@@ -8,7 +11,7 @@ import java.util.Iterator;
 /**
  * A top sections visitor. Responsible to gather top sections information of a document.
  */
-public class TopSectionsVisitor extends FormatterVisitor {
+public class TopSectionsVisitor extends ContentVisitor {
 
     @Override
     public void visit(Document document) {
@@ -21,10 +24,6 @@ public class TopSectionsVisitor extends FormatterVisitor {
 
     @Override
     public void visit(Author author) {
-    }
-
-    @Override
-    public void visit(TextElement element) {
     }
 
     @Override
