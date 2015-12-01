@@ -4,6 +4,7 @@ import edt.core.Document;
 import edt.core.Editor;
 import edt.textui.visitors.ContentVisitor;
 import edt.textui.visitors.TextElementVisitor;
+import edt.textui.visitors.formatter.TextFormatter;
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
 import pt.utl.ist.po.ui.Form;
@@ -39,7 +40,7 @@ public class ShowTextElement extends Command<Editor> {
         String elementId = elementIdInput.value();
         Display display = new Display();
         if (document.containsTextElement(elementId)) {
-            ContentVisitor visitor = new TextElementVisitor();
+            ContentVisitor visitor = new TextElementVisitor(new TextFormatter());
             document.getTextElement(elementId).accept(visitor);
             Iterator<String> lineIterator = visitor.getLines();
             while (lineIterator.hasNext())

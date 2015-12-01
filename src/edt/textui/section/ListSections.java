@@ -3,6 +3,7 @@ package edt.textui.section;
 import edt.core.Section;
 import edt.textui.visitors.ContentVisitor;
 import edt.textui.visitors.ListSectionsVisitor;
+import edt.textui.visitors.formatter.TextFormatter;
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
 
@@ -29,7 +30,7 @@ public class ListSections extends Command<Section> {
     @Override
     @SuppressWarnings("nls")
     public final void execute() {
-        ContentVisitor visitor = new ListSectionsVisitor();
+        ContentVisitor visitor = new ListSectionsVisitor(new TextFormatter());
         entity().accept(visitor);
         Display display = new Display();
         Iterator<String> lineIterator = visitor.getLines();

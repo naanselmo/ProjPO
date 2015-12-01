@@ -10,13 +10,6 @@ public interface Visitor {
     void visit(Document document);
 
     /**
-     * Visits an author.
-     *
-     * @param author Author to visit.
-     */
-    void visit(Author author);
-
-    /**
      * Visits a section.
      *
      * @param section Section to visit.

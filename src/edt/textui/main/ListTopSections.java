@@ -4,6 +4,7 @@ import edt.core.Document;
 import edt.core.Editor;
 import edt.textui.visitors.ContentVisitor;
 import edt.textui.visitors.TopSectionsVisitor;
+import edt.textui.visitors.formatter.TextFormatter;
 import pt.utl.ist.po.ui.Command;
 import pt.utl.ist.po.ui.Display;
 
@@ -30,7 +31,7 @@ public class ListTopSections extends Command<Editor> {
     @SuppressWarnings("nls")
     public final void execute() {
         Document document = entity().getDocument();
-        ContentVisitor visitor = new TopSectionsVisitor();
+        ContentVisitor visitor = new TopSectionsVisitor(new TextFormatter());
         document.accept(visitor);
         Display display = new Display();
         Iterator<String> lineIterator = visitor.getLines();

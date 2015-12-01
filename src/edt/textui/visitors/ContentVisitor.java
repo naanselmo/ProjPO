@@ -13,10 +13,18 @@ public abstract class ContentVisitor implements Visitor {
 
     protected List<String> _content;
 
+    /**
+     * Initializes a content visitor.
+     */
     public ContentVisitor() {
         this._content = new LinkedList<>();
     }
 
+    /**
+     * Returns an iterator with the content of the visitor.
+     *
+     * @return Iterator with the content of this visitor.
+     */
     public Iterator<String> getLines() {
         return _content.iterator();
     }
