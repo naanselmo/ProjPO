@@ -55,6 +55,8 @@ public class Document extends Section {
      * @param id      New identifier of the text element.
      */
     public void renameTextElement(TextElement element, String id) {
+        if (element.hasId())
+            removeTextElement(element);
         if (containsTextElement(id))
             removeTextElement(getTextElement(id));
         element.setId(id);
@@ -165,6 +167,16 @@ public class Document extends Section {
         }
         /* We know both algorithm exists, so we are pretty sure we are not going to get here */
         return "";
+    }
+
+    /**
+     * Accepts a visitor
+     *
+     * @param visitor Visitor to accept
+     */
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
     }
 
 }

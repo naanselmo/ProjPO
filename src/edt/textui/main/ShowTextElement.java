@@ -37,7 +37,7 @@ public class ShowTextElement extends Command<Editor> {
         Display display = new Display();
         if (document.containsTextElement(id.value())) {
             FormatterVisitor visitor = new TextElementVisitor();
-            visitor.visit(document.getTextElement(id.value()));
+            document.getTextElement(id.value()).accept(visitor);
             for (String line : visitor.getLines())
                 display.addNewLine(line);
         } else {

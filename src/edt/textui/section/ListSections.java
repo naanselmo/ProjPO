@@ -28,9 +28,9 @@ public class ListSections extends Command<Section> {
     @SuppressWarnings("nls")
     public final void execute() {
         Display display = new Display();
-        FormatterVisitor listSection = new ListSectionsVisitor();
-        listSection.visit(entity());
-        for (String string : listSection.getLines()) {
+        FormatterVisitor listSectionsVisitor = new ListSectionsVisitor();
+        entity().accept(listSectionsVisitor);
+        for (String string : listSectionsVisitor.getLines()) {
             display.addNewLine(string);
         }
         display.display();

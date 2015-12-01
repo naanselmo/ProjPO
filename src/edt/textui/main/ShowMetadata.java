@@ -30,7 +30,7 @@ public class ShowMetadata extends Command<Editor> {
         Document document = entity().getDocument();
         Display display = new Display();
         FormatterVisitor visitor = new MetadataVisitor();
-        visitor.visit(document);
+        document.accept(visitor);
         for (String line : visitor.getLines())
             display.addNewLine(line);
         display.display();

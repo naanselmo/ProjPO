@@ -9,6 +9,7 @@ public class ListSectionsVisitor extends FormatterVisitor {
 
     @Override
     public void visit(Document document) {
+        visit((Section) document);
     }
 
     @Override
@@ -21,14 +22,14 @@ public class ListSectionsVisitor extends FormatterVisitor {
 
     @Override
     public void visit(Section section) {
-        if (section.hasId()) {
-            _content.add(Message.sectionIndexEntry(section.getId(), section.getTitle()));
-        } else
-            _content.add(Message.sectionIndexEntry("", section.getTitle()));
-
         Iterator<Section> sectionIterator = section.getSections();
         while (sectionIterator.hasNext()) {
-            sectionIterator.next().accept(this);
+            Section subsection = sectionIterator.next();
+            if (subsection.hasId()) {
+                _content.add(Message.sectionIndexEntry(subsection.getId(), subsection.getTitle()));
+            } else
+                _content.add(Message.sectionIndexEntry("", subsection.getTitle()));
+            subsection.accept(this);
         }
     }
 
