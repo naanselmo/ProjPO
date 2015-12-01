@@ -78,6 +78,7 @@ public class Section extends TextElement implements Element {
 
     /**
      * Deletes the subsection from the section with the given index.
+     * Also removes all subsections and paragraphs of the given subsection.
      *
      * @param document Document to be notified the removal of the subsection.
      * @param index    Index of the subsection to be removed.

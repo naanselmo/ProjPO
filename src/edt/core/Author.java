@@ -85,4 +85,5 @@ public class Author implements Element, Comparable<Author>, Serializable {
     public void accept(Visitor visitor) {
         visitor.visit(this);
     }
+
 }
